@@ -6,9 +6,22 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "bootstrap": "^4.2.1",
+    "dota2-minimap-hero-sprites": "^2.2.0",
+    "moment": "^2.19.1",
+    "node-sass": "^4.13.0",
+    "object-assign": "^4.1.1",
+    "popper.js": "^1.14.6",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.3.0",
+    "recharts": "^1.6.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "typeface-roboto": "^0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",

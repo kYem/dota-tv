@@ -1,6 +1,7 @@
 // @flow
 import 'whatwg-fetch'
 import BaseMapper from './baseMapper'
+import config from '../project.config';
 
 export const API_ERROR = 'API_ERROR'
 export const LIVE_MATCH_SUBSCRIBE = 'LIVE_MATCH_SUBSCRIBE'
@@ -9,7 +10,6 @@ export const LIVE_MATCHES = 'LIVE_MATCHES'
 export const MATCH_FINISHED = 'MATCH_FINISHED'
 export const STREAMS_LOADED = 'STREAMS_LOADED'
 
-const config = require('../../project.config')
 
 const DEFAULT_OPTIONS = {
   method: 'GET',

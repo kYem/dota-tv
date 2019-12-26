@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore as createReduxStore } from 'redux'
 import thunk from 'redux-thunk'
 import makeRootReducer from './reducers'
+import config from '../project.config';
 
 const createStore = (initialState = {}) => {
   // ======================================================
@@ -14,7 +15,7 @@ const createStore = (initialState = {}) => {
   const enhancers = []
   let composeEnhancers = compose
 
-  if (__DEV__) {
+  if (!config.isProd) {
     if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
       composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     }

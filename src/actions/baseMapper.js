@@ -1,5 +1,5 @@
 import LiveStreaming from './LiveStreaming'
-import * as config from '../../project.config'
+import config from '../project.config';
 
 const moment = require('moment')
 
