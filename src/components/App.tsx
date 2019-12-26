@@ -7,7 +7,7 @@ import StreamView from '../routes/streams/components/StreamView'
 import createStore from '../store/createStore'
 import '../styles/main.scss'
 
-const store = createStore(window.__INITIAL_STATE__)
+const store = createStore()
 
 class App extends React.Component {
 

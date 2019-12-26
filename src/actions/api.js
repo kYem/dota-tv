@@ -1,4 +1,3 @@
-// @flow
 import 'whatwg-fetch'
 import BaseMapper from './baseMapper'
 import config from '../project.config';
@@ -30,8 +29,8 @@ function makeRequest(url, options, dispatch, dispatchType) {
     .catch(err => dispatch({ type: API_ERROR, payload: err }))
 }
 
-export function getLiveMatches(partner: number = 0) {
-  return (dispatch: Function) => makeRequest(
+export function getLiveMatches(partner = 0) {
+  return (dispatch) => makeRequest(
     `${config.apiHostname}/live?partner=${partner}`,
     DEFAULT_OPTIONS,
     dispatch,
@@ -48,8 +47,8 @@ const isMatchComplete = (json) => {
   return (buildings[17] && buildings[17].destroyed) || (buildings[35] && buildings[35].destroyed)
 }
 
-export function getLiveMatchDetails(serverSteamId: string) {
-  return (dispatch: Function) =>
+export function getLiveMatchDetails(serverSteamId) {
+  return (dispatch) =>
     fetch(`${config.apiHostname}/live/stats?server_steam_id=${serverSteamId}`, DEFAULT_OPTIONS)
       .then((response) => {
         response.json()
@@ -63,15 +62,15 @@ export function getLiveMatchDetails(serverSteamId: string) {
 }
 
 export function getLiveStreams() {
-  return (dispatch: Function) =>
+  return (dispatch) =>
     fetch(`${config.apiHostname}/streams`, DEFAULT_OPTIONS)
       .then(response => response.json())
       .then(payload => dispatch({ type: STREAMS_LOADED, payload }))
       .catch(err => dispatch({ type: API_ERROR, payload: err }))
 }
 
-export function subscribeLiveMatch(serverSteamId: string) {
-  return (dispatch: Function) => {
+export function subscribeLiveMatch(serverSteamId) {
+  return (dispatch) => {
     dispatch({ type: LIVE_MATCH_SUBSCRIBE, payload: serverSteamId })
     mapper.sub('dota_live_match', { server_steam_id: serverSteamId }, serverSteamId, (json, err) => {
       if (err) {

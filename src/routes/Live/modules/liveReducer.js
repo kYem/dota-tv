@@ -1,4 +1,3 @@
-// @flow
 import { LIVE_MATCH_DETAILS, MATCH_FINISHED } from '../../../actions/api'
 import { mapAccountToPlayer } from '../../../actions/matchProcessing'
 
@@ -18,7 +17,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-export default function liveReducer(state: any = { live: {} }, action: any) {
+export default function liveReducer(state = { live: {} }, action) {
   const handler = ACTION_HANDLERS[action.type]
   return handler ? handler(state, action) : state
 }

@@ -32,7 +32,7 @@ export function getKnownPlayers(players) {
   return players.filter(player => player.is_pro || (player.stream && player.stream.id))
 }
 
-export function gameTime(time: number) {
+export function gameTime(time) {
   const minutes = Math.floor(time / 60)
   const seconds = time - (minutes * 60)
   const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds
