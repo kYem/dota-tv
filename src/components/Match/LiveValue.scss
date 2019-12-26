@@ -1,0 +1,66 @@
+$green: #238859;
+$red: #dc5538;
+$white: #fff;
+
+.stats-count {
+  &.up {
+    color: $green;
+    &.highlight {
+      animation: highlight-up 1s;
+    }
+    .change {
+      display: inline-block;
+      border-bottom: 8px solid $green;
+    }
+  }
+  &.down {
+    &.highlight {
+      animation: highlight-down 1s;
+    }
+    color: $red;
+    .change {
+      display: inline-block;
+      border-top: 8px solid $red;
+    }
+  }
+
+  .change {
+    display: none;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    margin-right: 2px;
+  }
+
+  @keyframes highlight-up {
+    0% {
+      background: $green;
+      color: $white;
+    }
+    99% {
+      background: $green;
+      color: $white;
+    }
+    100% {
+      background: none;
+    }
+  }
+
+  @keyframes highlight-down {
+    0% {
+      color: $white;
+      background: $red
+    }
+    99% {
+      color: $white;
+      background: $red
+    }
+    100% {
+      background: none;
+    }
+  }
+}
+
+

@@ -1,0 +1,33 @@
+.rank-tier-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  margin: 0 5px;
+}
+
+.rank-tier-images  {
+
+  position: relative;
+
+  .rank-tier-base {
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
+
+  .leaderboard-rank-value {
+    position: absolute;
+    width: 100%;
+    top: 18px;
+    padding: 3px;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+}
+
+
