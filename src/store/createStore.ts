@@ -12,12 +12,14 @@ const createStore = (initialState = {}) => {
   // ======================================================
   // Store Enhancers
   // ======================================================
-  const enhancers = []
+  const enhancers: never[] = []
   let composeEnhancers = compose
 
   if (!config.isProd) {
-    if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
-      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    // @ts-ignore
+    let windowElement: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    if (typeof windowElement === 'function') {
+      composeEnhancers = windowElement
     }
   }
 
@@ -32,12 +34,11 @@ const createStore = (initialState = {}) => {
       ...enhancers
     )
   )
-  store.asyncReducers = {}
 
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      store.replaceReducer(makeRootReducer(store.asyncReducers))
+      store.replaceReducer(makeRootReducer())
     })
   }
 
