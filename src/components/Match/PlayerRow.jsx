@@ -47,6 +47,7 @@ class PlayerRow extends React.Component {
             <a
               href={`https://www.dotabuff.com/players/${this.props.account_id}`}
               target='_blank'
+              rel="noopener noreferrer"
             > {this.props.name}</a>
           </span>
         </td>
