@@ -38,7 +38,8 @@ export default class TopLiveMatches extends React.PureComponent {
     players: []
   };
 
-  changeLiveMatch = () => {
+  changeLiveMatch = (e) => {
+    e.preventDefault()
     this.props.subscribeLiveMatch(this.props.server_steam_id)
   }
 
@@ -64,15 +65,8 @@ export default class TopLiveMatches extends React.PureComponent {
     const knownPlayers = getKnownPlayers(this.props.players)
     return (
       <div className='top-match col-12 shadow-sm p-2'>
-        <h5 className={'header'}>
-          <a
-            role='button'
-            tabIndex={0}
-            onClick={this.changeLiveMatch}
-            className={this.props.active}
-          >
+        <h5 className={'header'}  onClick={this.changeLiveMatch}>
             {MatchScore(this.props)}
-          </a>
         </h5>
 
         <div className='game-info'>
@@ -90,16 +84,17 @@ export default class TopLiveMatches extends React.PureComponent {
 
         <div className='live-match'>
           {knownPlayers.map(player => (
-            <div className='player d-flex mt-2 mb-2' key={player.account_id}>
+            <div className='player align-items-center d-flex mt-2 mb-2' key={player.account_id}>
               <img
                 src={player.hero_image}
                 alt={player.hero_name}
                 className='rounded hero-image'
               />
-              <div className='d-flex flex-grow-1 align-items-center'>
+              <div className='d-flex flex-grow-1 align-items-center ellipsis'>
                 <a
                   href={`https://www.dotabuff.com/players/${player.account_id}`}
                   target='_blank'
+                  rel="noopener noreferrer"
                   className='ml-1 ellipsis flex-grow-1'
                 >
                 <span>
