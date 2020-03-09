@@ -24,10 +24,9 @@ export default streamsSlice.reducer
 
 
 export const getLiveStreamsDetails = (): AppThunk => async dispatch => {
-  try {
-    const repoDetails = await getLiveStreams()
-    dispatch(setStreams(repoDetails))
-  } catch (err) {
-    dispatch(setError(err))
-  }
+  getLiveStreams().then(
+    streams => dispatch(setStreams(streams)),
+    // handle only request error, otherwise it would catch setStreams error
+    err => dispatch(setError(err.toString()))
+  )
 }
