@@ -1,4 +1,9 @@
-export interface GameList {
+import { Stream } from './Stream'
+
+export interface TopLiveGames {
+  game_list: Match[]
+}
+export interface Match {
   server_steam_id:   string;
   lobby_id:          string;
   match_id:          string;
@@ -34,16 +39,3 @@ export interface Player {
   seasonLeaderboardRank?: number;
 }
 
-export interface Stream {
-  id:            string;
-  user_id:       string;
-  user_name:     string;
-  game_id:       string;
-  community_ids: null;
-  type:          string;
-  title:         string;
-  viewer_count:  number;
-  started_at:    Date;
-  language:      string;
-  thumbnail_url: string;
-}

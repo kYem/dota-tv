@@ -1,18 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AppThunk } from '../../store/store'
 import { getLiveStreams } from '../../actions/api'
+import { Stream } from '../../models/Stream'
 
-let initialState = { loaded: false, error: undefined, data: [] }
+const initialState: { loaded: boolean; data: Stream[]; error: string } = {
+  loaded: false,
+  error: '',
+  data: []
+}
 
 const streamsSlice = createSlice({
   name: 'streams',
   initialState,
   reducers: {
-    setStreams(state, action: PayloadAction<any>) {
+    setStreams(state, action: PayloadAction<Stream[]>) {
       state.data = action.payload
       state.loaded = true
     },
-    setError(state, action: PayloadAction<any>) {
+    setError(state, action: PayloadAction<string>) {
       state.error = action.payload
       state.loaded = true
     },
