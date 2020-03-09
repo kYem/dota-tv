@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import connect from 'react-redux/es/connect/connect'
 import './HomeView.scss'
-import { getLiveMatches, subscribeLiveMatch } from '../../../actions/api'
-import TopLiveMatches from '../../../components/Match/TopLiveMatches'
-import LiveMatch from '../../../components/Match/LiveMatch'
-import Progress from '../../../components/Progress'
+import TopLiveMatches from '../../components/Match/TopLiveMatches'
+import LiveMatch from '../../components/Match/LiveMatch'
+import Progress from '../../components/Progress'
+import { loadLiveMatch, subscribeToLiveMatch } from './homeSlice'
 
 class HomeView extends React.Component {
   static propTypes = {
-    getLiveMatches: PropTypes.func.isRequired,
-    subscribeLiveMatch: PropTypes.func.isRequired,
+    loadLiveMatch: PropTypes.func.isRequired,
+    subscribeToLiveMatch: PropTypes.func.isRequired,
     matches: PropTypes.array,
     liveMatch: PropTypes.shape({}),
     liveMatchServerId: PropTypes.string
@@ -23,9 +23,9 @@ class HomeView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getLiveMatches()
+    this.props.loadLiveMatch()
     this.refresh = setInterval(() => {
-      this.props.getLiveMatches()
+      this.props.loadLiveMatch()
     }, 6000)
   }
 
@@ -40,7 +40,7 @@ class HomeView extends React.Component {
 
     return this.props.matches.map(match => (
       <TopLiveMatches
-        subscribeLiveMatch={this.props.subscribeLiveMatch}
+        subscribeLiveMatch={this.props.subscribeToLiveMatch}
         active={this.props.liveMatchServerId === match.server_steam_id ? 'active' : 'inactive'}
         key={match.server_steam_id}
         {...match}
@@ -53,7 +53,7 @@ class HomeView extends React.Component {
     }
 
     return (<LiveMatch
-      wsGetLiveMatchDetails={this.props.subscribeLiveMatch}
+      wsGetLiveMatchDetails={this.props.subscribeToLiveMatch}
       serverId={this.props.liveMatchServerId}
       {...this.props.liveMatch}
     />)
@@ -74,8 +74,8 @@ class HomeView extends React.Component {
 }
 
 const mapDispatchToProps = {
-  getLiveMatches,
-  subscribeLiveMatch,
+  loadLiveMatch,
+  subscribeToLiveMatch,
 }
 
 const mapStateToProps = state => ({

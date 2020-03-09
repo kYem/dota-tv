@@ -2,6 +2,13 @@ import { mapAccountToPlayer, matchToPlayers } from '../../actions/matchProcessin
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Match, TopLiveGames } from '../../models/TopLiveGames'
 import { LiveMatchData } from '../../models/LiveMatchData'
+import {
+  mapper,
+  API_ERROR,
+  getLiveMatchDetails,
+  getLiveMatches,
+} from '../../actions/api'
+import { AppThunk } from '../../store/store'
 
 interface InitialState {
   server_steam_id: string;
@@ -67,5 +74,45 @@ export const {
   subscribeLiveMatch,
 } = homeSlice.actions
 
-export default homeSlice.reducer
 
+const isMatchComplete = (matchData: LiveMatchData) => {
+  const buildings = matchData.buildings
+  if (!matchData.match || !buildings) {
+    return true
+  }
+
+  return (buildings[17] && buildings[17].destroyed) || (buildings[35] && buildings[35].destroyed)
+}
+
+export const getLiveMatch = (serverSteamId: string): AppThunk => async dispatch => {
+  getLiveMatchDetails(serverSteamId).then(
+    (matchData: LiveMatchData) => {
+      // If we still have match, update details otherwise get new live matches
+      isMatchComplete(matchData) ? setLiveMatchFinished() : setLiveMatchDetails(matchData)
+    },
+    err => dispatch({ type: API_ERROR, payload: err })
+  )
+}
+
+export const loadLiveMatch = (partner = 0): AppThunk => async dispatch => {
+  getLiveMatches(partner).then(
+    (matchData: TopLiveGames) => {
+      dispatch(setLiveMatches(matchData))
+    },
+    err => dispatch({ type: API_ERROR, payload: err })
+  )
+}
+
+
+export const subscribeToLiveMatch = (serverSteamId: string): AppThunk => dispatch => {
+  subscribeLiveMatch(serverSteamId)
+  mapper.sub('dota_live_match', { server_steam_id: serverSteamId }, serverSteamId,
+    ({ data }: { data: LiveMatchData }, err: Error) => {
+      if (err) {
+        return dispatch({ type: API_ERROR, payload: err })
+      }
+      dispatch(isMatchComplete(data) ? setLiveMatchFinished() : setLiveMatchDetails(data))
+    })
+}
+
+export default homeSlice.reducer

@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import home from '../routes/Home/modules/homeReducer'
 import streamReducer from '../routes/streams/streamSlice'
+import homeReducer from '../routes/Home/homeSlice'
 
 const rootReducer = combineReducers({
-  home,
+  home: homeReducer,
   streams: streamReducer,
 })
 
