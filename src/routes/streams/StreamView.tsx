@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './StreamView.scss'
-import Loader from '../../../components/loader/Loader'
-import TwitchPlayer from '../../../components/twitch/TwitchPlayer'
-import { getLiveStreamsDetails } from '../streamSlice'
-import { Stream } from '../../../models/Stream'
-import { RootState } from '../../../store/rootReducer'
+import Loader from '../../components/loader/Loader'
+import TwitchPlayer from '../../components/twitch/TwitchPlayer'
+import { getLiveStreamsDetails } from './streamSlice'
+import { Stream } from '../../models/Stream'
+import { RootState } from '../../store/rootReducer'
 
 
 interface StreamViewProp {

@@ -3,7 +3,7 @@ import 'typeface-roboto'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import HomeView from '../routes/Home/components/HomeView'
-import StreamView from '../routes/streams/components/StreamView'
+import StreamView from '../routes/streams/StreamView'
 import store from '../store/store'
 import '../styles/main.scss'
 
