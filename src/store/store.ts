@@ -1,13 +1,9 @@
-import { applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import { configureStore } from '@reduxjs/toolkit'
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 
-import rootReducer from './rootReducer'
+import rootReducer, { RootState } from './rootReducer'
 
-const middleware = [thunk]
 const store = configureStore({
   reducer: rootReducer,
-  enhancers: [applyMiddleware(...middleware)]
 })
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
@@ -18,6 +14,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 }
 
 export type AppDispatch = typeof store.dispatch
+export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>
 
 export default store
 

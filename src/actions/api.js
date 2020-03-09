@@ -61,12 +61,9 @@ export function getLiveMatchDetails(serverSteamId) {
       .catch(err => dispatch({ type: API_ERROR, payload: err }))
 }
 
-export function getLiveStreams() {
-  return (dispatch) =>
-    fetch(`${config.apiHostname}/streams`, DEFAULT_OPTIONS)
-      .then(response => response.json())
-      .then(payload => dispatch({ type: STREAMS_LOADED, payload }))
-      .catch(err => dispatch({ type: API_ERROR, payload: err }))
+export async function getLiveStreams() {
+  const response = await fetch(`${config.apiHostname}/streams`, DEFAULT_OPTIONS)
+  return response.json()
 }
 
 export function subscribeLiveMatch(serverSteamId) {

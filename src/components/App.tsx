@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import HomeView from '../routes/Home/components/HomeView'
 import StreamView from '../routes/streams/components/StreamView'
-import store from '../store/createStore'
+import store from '../store/store'
 import '../styles/main.scss'
 
 class App extends React.Component {

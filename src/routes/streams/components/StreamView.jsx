@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './StreamView.scss'
-import { getLiveStreams } from '../../../actions/api'
 import Loader from '../../../components/loader/Loader'
 import TwitchPlayer from '../../../components/twitch/TwitchPlayer'
+import { getLiveStreamsDetails } from '../streamSlice'
 
 class StreamView extends React.Component {
 
   static propTypes = {
-    getLiveStreams: PropTypes.func.isRequired,
+    getLiveStreamsDetails: PropTypes.func.isRequired,
     streams: PropTypes.arrayOf(PropTypes.shape({
       game_id: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
@@ -40,7 +40,7 @@ class StreamView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getLiveStreams()
+    this.props.getLiveStreamsDetails()
   }
 
 
@@ -116,7 +116,7 @@ class StreamView extends React.Component {
 
 
 const mapDispatchToProps = {
-  getLiveStreams,
+  getLiveStreamsDetails,
 }
 
 const mapStateToProps = state => ({

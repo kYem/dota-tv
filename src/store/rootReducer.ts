@@ -1,11 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit'
 import home from '../routes/Home/modules/homeReducer'
-import streamReducer from '../routes/streams/streamReducer'
+import streamReducer from '../routes/streams/streamSlice'
 
-const rootReducer = (asyncReducers: {} = {}) => combineReducers({
+const rootReducer = combineReducers({
   home,
   streams: streamReducer,
-  ...asyncReducers
 })
 
 export type RootState = ReturnType<typeof rootReducer>
