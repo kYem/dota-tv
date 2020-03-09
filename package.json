@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.2.5",
     "bootstrap": "^4.2.1",
     "dota2-minimap-hero-sprites": "^2.2.0",
     "moment": "^2.19.1",
