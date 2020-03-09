@@ -10,10 +10,16 @@ import {
 } from '../../actions/api'
 import { AppThunk } from '../../store/store'
 
+export interface LiveMatchState {
+  isLoading: boolean,
+  updated: number,
+  data?: LiveMatchData
+}
+
 interface InitialState {
   server_steam_id: string;
   matches: Match[];
-  live: { isLoading: boolean, updated: number },
+  live: LiveMatchState,
 }
 
 const initialState: InitialState = {
@@ -55,7 +61,7 @@ const homeSlice = createSlice({
         ...state.live,
         isLoading: false,
         updated: Date.now(),
-        ...payload
+        data: payload
       }
 
       return { ...state, live: liveMatchState }

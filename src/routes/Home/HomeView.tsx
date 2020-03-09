@@ -1,26 +1,32 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import connect from 'react-redux/es/connect/connect'
+import { connect } from 'react-redux'
 import './HomeView.scss'
 import TopLiveMatches from '../../components/Match/TopLiveMatches'
 import LiveMatch from '../../components/Match/LiveMatch'
 import Progress from '../../components/Progress'
-import { loadLiveMatch, subscribeToLiveMatch } from './homeSlice'
+import {
+  LiveMatchState,
+  loadLiveMatch,
+  subscribeToLiveMatch
+} from './homeSlice'
+import { RootState } from '../../store/rootReducer'
+import { Match } from '../../models/TopLiveGames'
 
-class HomeView extends React.Component {
-  static propTypes = {
-    loadLiveMatch: PropTypes.func.isRequired,
-    subscribeToLiveMatch: PropTypes.func.isRequired,
-    matches: PropTypes.array,
-    liveMatch: PropTypes.shape({}),
-    liveMatchServerId: PropTypes.string
-  }
+interface HomeViewProps {
+  loadLiveMatch: () => void,
+  subscribeToLiveMatch: any,
+  matches: Match[],
+  liveMatchServerId: string,
+  liveMatchState: LiveMatchState,
+}
+
+class HomeView extends React.Component<HomeViewProps> {
 
   static defaultProps = {
     liveMatchServerId: '',
-    liveMatch: null,
     matches: [],
   }
+  refresh!: NodeJS.Timeout
 
   componentDidMount() {
     this.props.loadLiveMatch()
@@ -52,10 +58,13 @@ class HomeView extends React.Component {
       return <Progress />
     }
 
+    const { isLoading, updated, data } = this.props.liveMatchState
     return (<LiveMatch
       wsGetLiveMatchDetails={this.props.subscribeToLiveMatch}
       serverId={this.props.liveMatchServerId}
-      {...this.props.liveMatch}
+      isLoading={isLoading}
+      updated={updated}
+      {...data}
     />)
   }
 
@@ -78,9 +87,9 @@ const mapDispatchToProps = {
   subscribeToLiveMatch,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: RootState) => ({
   matches: state.home.matches,
-  liveMatch: state.home.live,
+  liveMatchState: state.home.live,
   liveMatchServerId: state.home.server_steam_id
 })
 
