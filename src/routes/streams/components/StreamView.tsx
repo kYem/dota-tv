@@ -1,42 +1,29 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './StreamView.scss'
 import Loader from '../../../components/loader/Loader'
 import TwitchPlayer from '../../../components/twitch/TwitchPlayer'
 import { getLiveStreamsDetails } from '../streamSlice'
+import { Stream } from '../../../models/Stream'
+import { RootState } from '../../../store/rootReducer'
 
-class StreamView extends React.Component {
 
-  static propTypes = {
-    getLiveStreamsDetails: PropTypes.func.isRequired,
-    streams: PropTypes.arrayOf(PropTypes.shape({
-      game_id: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      language: PropTypes.string.isRequired,
-      started_at: PropTypes.string.isRequired,
-      thumbnail_url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      user_id: PropTypes.string.isRequired,
-      user_name: PropTypes.string.isRequired,
-      viewer_count: PropTypes.number.isRequired
-    })).isRequired,
-    loaded: PropTypes.bool,
-  }
+interface StreamViewProp {
+  streams: Stream[],
+  getLiveStreamsDetails: () => void,
+  loaded: boolean,
+}
+
+class StreamView extends React.Component<StreamViewProp> {
+
 
   static defaultProps = {
     streams: [],
     loaded: false,
   }
 
-  state = {
+  state: { active: string[] } = {
     active: []
-  }
-
-  constructor(props) {
-    super(props)
-    this.toggleView.bind(this)
   }
 
   componentDidMount() {
@@ -44,7 +31,7 @@ class StreamView extends React.Component {
   }
 
 
-  toggleView(stream) {
+  toggleView = (stream: Stream) => {
     const key = stream.user_name
     const activeList = [...this.state.active]
     const index = activeList.indexOf(key)
@@ -69,7 +56,7 @@ class StreamView extends React.Component {
     )
   }
 
-  renderView(count) {
+  renderView(count: number) {
     return (
       <span>
         <i className='material-icons text-danger md-18 mr-2'>remove_red_eye</i>
@@ -78,7 +65,7 @@ class StreamView extends React.Component {
     )
   }
 
-  renderItem(stream) {
+  renderItem(stream: Stream) {
     return (
       <div>
         <h6>{stream.user_name} - {this.renderView(stream.viewer_count)}</h6>
@@ -119,7 +106,7 @@ const mapDispatchToProps = {
   getLiveStreamsDetails,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: RootState) => ({
   streams: state.streams.data,
   loaded: state.streams.loaded
 })
