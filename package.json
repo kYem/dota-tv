@@ -11,16 +11,16 @@
     "object-assign": "^4.1.1",
     "popper.js": "^1.14.6",
     "prop-types": "^15.7.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.4.1",
     "recharts": "^2.0.0-beta.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "typeface-roboto": "^0.0.75",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
@@ -37,8 +37,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
