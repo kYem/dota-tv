@@ -4,7 +4,7 @@ import config from '../project.config';
 
 export const API_ERROR = 'API_ERROR'
 
-const DEFAULT_OPTIONS = {
+const DEFAULT_OPTIONS: RequestInit = {
   method: 'GET',
   credentials: 'same-origin',
   headers: new Headers({
@@ -19,7 +19,7 @@ export async function getLiveMatches(partner = 0) {
   return response.json()
 }
 
-export async function getLiveMatchDetails(serverSteamId) {
+export async function getLiveMatchDetails(serverSteamId: string) {
   const response = await fetch(`${config.apiHostname}/live/stats?server_steam_id=${serverSteamId}`, DEFAULT_OPTIONS)
   return response.json()
 }
