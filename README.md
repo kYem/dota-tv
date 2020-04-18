@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3ef355e7-205f-4850-9abd-79a8ec64d24c/deploy-status)](https://app.netlify.com/sites/dotatv/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
