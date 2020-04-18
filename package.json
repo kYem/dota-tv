@@ -5,9 +5,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.2.5",
     "bootstrap": "^4.2.1",
+    "dayjs": "^1.8.24",
     "dota2-minimap-hero-sprites": "^2.2.0",
     "env-cmd": "^10.1.0",
-    "moment": "^2.19.1",
     "node-sass": "^4.13.1",
     "object-assign": "^4.1.1",
     "popper.js": "^1.14.6",

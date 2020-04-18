@@ -1,7 +1,6 @@
 import LiveStreaming from './LiveStreaming'
 import config from '../project.config';
-
-const moment = require('moment')
+import * as dayjs from 'dayjs';
 
 export default class BaseMapper {
   constructor(socket) {
@@ -44,7 +43,7 @@ export default class BaseMapper {
   }
 
   static generate() {
-    return `${moment().format('YYYYMMDD-HHmmss')}-${Math.round(Math.random() * 10000000)}`
+    return `${dayjs().format('YYYYMMDD-HHmmss')}-${Math.round(Math.random() * 10000000)}`
   }
 
   getRequestData(serviceName, parameters) {
