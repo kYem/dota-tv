@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 export default class BaseMapper {
   private socket: LiveStreaming;
 
-  constructor(socket: LiveStreaming) {
+  constructor(socket?: LiveStreaming) {
     this.socket = socket || new LiveStreaming(config.wsEndpoint)
   }
 
