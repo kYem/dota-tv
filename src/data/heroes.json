@@ -453,18 +453,30 @@
       "id": 114
     },
     {
-      "name": "npc_dota_hero_dark_willow",
-      "id": 119
-    },
-    {
       "name": "npc_dota_hero_pangolier",
       "id": 120
     },
     {
+      "name": "npc_dota_hero_dark_willow",
+      "id": 119
+    },
+    {
       "name": "npc_dota_hero_grimstroke",
       "id": 121
+    },
+    {
+      "name": "npc_dota_hero_mars",
+      "id": 129
+    },
+    {
+      "name": "npc_dota_hero_void_spirit",
+      "id": 126
+    },
+    {
+      "name": "npc_dota_hero_snapfire",
+      "id": 128
     }
   ],
   "status": 200,
-  "count": 116
+  "count": 119
 }
