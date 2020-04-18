@@ -1,9 +1,11 @@
 import LiveStreaming from './LiveStreaming'
 import config from '../project.config';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 export default class BaseMapper {
-  constructor(socket) {
+  private socket: LiveStreaming;
+
+  constructor(socket: LiveStreaming) {
     this.socket = socket || new LiveStreaming(config.wsEndpoint)
   }
 
@@ -15,11 +17,11 @@ export default class BaseMapper {
      * with the given resolve and reject functions,
      * or rejected by a thrown exception in resolver
      */
-  getRequest(serviceName, parameters) {
+  getRequest(serviceName: string, parameters: any): Promise<any> {
     return new Promise((resolve, reject) => {
       const reference = BaseMapper.generate()
       this.socket.emit(serviceName, parameters, reference)
-      this.socket.once(`${serviceName}.${reference}`, (response) => {
+      this.socket.once(`${serviceName}.${reference}`, (response: any) => {
         if (response && response.success) {
           resolve(response)
         } else {
@@ -38,7 +40,7 @@ export default class BaseMapper {
    * with the given resolve and reject functions,
    * or rejected by a thrown exception in resolver
    */
-  sub(serviceName, parameters, staticReference, callback) {
+  sub(serviceName: string, parameters: any, staticReference: string, callback: Function) {
     this.socket.subscribe(serviceName, parameters, staticReference, callback)
   }
 
@@ -46,7 +48,7 @@ export default class BaseMapper {
     return `${dayjs().format('YYYYMMDD-HHmmss')}-${Math.round(Math.random() * 10000000)}`
   }
 
-  getRequestData(serviceName, parameters) {
+  getRequestData(serviceName: string, parameters: any) {
     return new Promise((resolve, reject) => {
       const reference = BaseMapper.generate()
       const data = {
@@ -55,7 +57,7 @@ export default class BaseMapper {
       }
 
       this.socket.emit(serviceName, data)
-      this.socket.once(`${serviceName}.${reference}`, (response) => {
+      this.socket.once(`${serviceName}.${reference}`, (response: any) => {
         if (response && response.success) {
           resolve(response.data)
         }
