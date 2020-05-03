@@ -1,4 +1,5 @@
 import { Stream } from './Stream'
+import { Hero } from './Hero';
 
 export interface TopLiveGames {
   game_list: Match[]
@@ -30,12 +31,6 @@ export interface Match {
   dire_score:        number;
   players:           Player[];
   building_state:    number;
-}
-
-interface Hero {
-  id: number;
-  name: string;
-  image: string;
 }
 
 export interface Player {

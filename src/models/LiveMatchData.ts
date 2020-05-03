@@ -1,3 +1,5 @@
+import { Hero } from './Hero';
+
 export interface LiveMatchData {
   match:       Match;
   teams:       Team[];
@@ -59,4 +61,5 @@ export interface Player {
   x:             number;
   y:             number;
   net_worth:     number;
+  hero: Hero
 }
