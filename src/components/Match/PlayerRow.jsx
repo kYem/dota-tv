@@ -9,9 +9,11 @@ class PlayerRow extends React.Component {
     avatar: PropTypes.string,
     avatarfull: PropTypes.string,
     avatarmedium: PropTypes.string,
-    hero_id: PropTypes.number.isRequired,
-    hero_image: PropTypes.string.isRequired,
-    hero_name: PropTypes.string.isRequired,
+    hero: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
     name: PropTypes.string,
     personaname: PropTypes.string,
     team_tag: PropTypes.string,
@@ -41,7 +43,7 @@ class PlayerRow extends React.Component {
     return (
       <tr className='player-row'>
         <td className='player-name'>
-          <img src={this.props.hero_image} alt={this.props.hero_name} className='rounded image hero-image' />
+          <img src={this.props.hero?.image} alt={this.props.hero?.name} className='rounded image hero-image' />
           <span className='ml-1'>
             {this.props.team_tag}
             <a

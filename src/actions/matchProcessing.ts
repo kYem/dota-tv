@@ -1,7 +1,5 @@
-import config from '../project.config';
 import { Match, Player } from '../models/TopLiveGames';
 const proPlayers = require('../data/pro-players.json')
-const heroes = require('../data/heroes.json')
 
 interface ProPlayer {
   account_id: number;
@@ -32,18 +30,9 @@ interface ExpandedPlayer extends ProPlayer, Player{
 }
 
 export function mapAccountToPlayer(playerObject: Player) {
-  const heroDataList: { id: number, name: string }[] = heroes.heroes;
-  const heroData = heroDataList.find(hero => hero.id === playerObject.hero_id)
-  const heroName = heroData ? heroData.name.replace('npc_dota_hero_', '') : ''
-
   return Object.assign(
     playerObject,
     proPlayers.find((player: ProPlayer) => player.account_id === playerObject.account_id),
-    {
-      hero_name: heroName,
-      hero_image: heroData ? `${config.dotaImageCdn}/heroes/${heroName}_sb.png` : '/images/heroes/unknown-hero.jpeg',
-      hero_id: playerObject.hero_id
-    }
   )
 }
 
@@ -51,15 +40,18 @@ export function matchToPlayers(match: Match) {
   if (!match || !match.players) {
     return match
   }
-  match.players.map(player => mapAccountToPlayer(player))
+  match.players.map(mapAccountToPlayer)
   return match
 }
 
-export function getKnownPlayers(players: ExpandedPlayer[]) {
+export function getKnownPlayers(players: (ExpandedPlayer|Player)[]) {
   if (!players) {
     return []
   }
-  return players.filter(player => player.is_pro || (player.stream && player.stream.id))
+  return players.filter(player => {
+    return ('is_pro' in player && player.is_pro)
+      || (player.stream && player.stream.id);
+  })
 }
 
 export function gameTime(time: number) {

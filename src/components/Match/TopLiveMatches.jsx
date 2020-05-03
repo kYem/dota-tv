@@ -86,8 +86,8 @@ export default class TopLiveMatches extends React.PureComponent {
           {knownPlayers.map(player => (
             <div className='player align-items-center d-flex mt-2 mb-2' key={player.account_id}>
               <img
-                src={player.hero_image}
-                alt={player.hero_name}
+                src={player.hero?.image}
+                alt={player.hero?.name}
                 className='rounded hero-image'
               />
               <div className='d-flex flex-grow-1 align-items-center ellipsis'>

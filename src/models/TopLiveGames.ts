@@ -32,10 +32,17 @@ export interface Match {
   building_state:    number;
 }
 
+interface Hero {
+  id: number;
+  name: string;
+  image: string;
+}
+
 export interface Player {
-  account_id:             number;
-  hero_id:                number;
-  stream:                 Stream;
+  account_id: number;
+  hero_id: number;
+  hero: Hero
+  stream: Stream;
   seasonLeaderboardRank?: number;
 }
 
