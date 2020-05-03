@@ -24,7 +24,6 @@ export default class TopLiveMatches extends React.PureComponent {
     radiant_score: PropTypes.number.isRequired,
     server_steam_id: PropTypes.string.isRequired,
     spectators: PropTypes.number.isRequired,
-    subscribeLiveMatch: PropTypes.func.isRequired,
     active: PropTypes.string.isRequired
   }
 

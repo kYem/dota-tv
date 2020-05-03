@@ -33,6 +33,12 @@ export function mapAccountToPlayer(playerObject: Player) {
   return Object.assign(
     playerObject,
     proPlayers.find((player: ProPlayer) => player.account_id === playerObject.account_id),
+    {
+      hero: {
+        ...playerObject.hero,
+        image: playerObject.hero.image || '/images/heroes/unknown-hero.jpeg'
+      }
+    }
   )
 }
 
