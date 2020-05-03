@@ -72,7 +72,7 @@ export const LiveMatch = ({ server_steam_id }: LiveMatchProps) => {
       <br />
       <Minimap radiant={radiant.players} dire={dire.players} />
 
-      <Advantage data={graph_data.graph_gold.map(d => ({ name: 'a', value : d }))} />
+      <Advantage data={graph_data.graph_gold} />
 
     </div>
   )
