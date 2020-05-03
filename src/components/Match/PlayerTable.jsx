@@ -2,7 +2,7 @@ import React from 'react'
 import './PlayerTable.scss'
 import PlayerRow from './PlayerRow'
 
-const PlayerTable = React.memo(({ players }) => (
+const PlayerTable = ({ players }) => (
 
   <table className='ui table player-match-table table-striped'>
     <thead className='thead-dark'>
@@ -21,7 +21,6 @@ const PlayerTable = React.memo(({ players }) => (
       {players.map(player => (<PlayerRow key={player.account_id} {...player} />))}
     </tbody>
   </table>
-
-))
+)
 
 export default PlayerTable

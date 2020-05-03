@@ -40,7 +40,7 @@ export default class TopLiveMatches extends React.PureComponent {
 
   changeLiveMatch = (e) => {
     e.preventDefault()
-    this.props.subscribeLiveMatch(this.props.server_steam_id)
+    this.props.setLiveMatchId(this.props.server_steam_id)
   }
 
   renderStreamInfo(player) {

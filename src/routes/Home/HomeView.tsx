@@ -2,22 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './HomeView.scss'
 import TopLiveMatches from '../../components/Match/TopLiveMatches'
-import LiveMatch from '../../components/Match/LiveMatch'
+import { LiveMatch } from '../../components/Match/LiveMatch'
 import Progress from '../../components/Progress'
-import {
-  LiveMatchState,
-  loadLiveMatch,
-  subscribeToLiveMatch
-} from './homeSlice'
+import { loadLiveMatch, setLiveMatchId } from './homeSlice'
 import { RootState } from '../../store/rootReducer'
 import { Match } from '../../models/TopLiveGames'
 
 interface HomeViewProps {
   loadLiveMatch: () => void,
-  subscribeToLiveMatch: any,
+  setLiveMatchId: any,
   matches: Match[],
   liveMatchServerId: string,
-  liveMatchState: LiveMatchState,
 }
 
 class HomeView extends React.Component<HomeViewProps> {
@@ -46,26 +41,11 @@ class HomeView extends React.Component<HomeViewProps> {
 
     return this.props.matches.map(match => (
       <TopLiveMatches
-        subscribeLiveMatch={this.props.subscribeToLiveMatch}
+        setLiveMatchId={this.props.setLiveMatchId}
         active={this.props.liveMatchServerId === match.server_steam_id ? 'active' : 'inactive'}
         key={match.server_steam_id}
         {...match}
       />))
-  }
-
-  renderLiveMatch() {
-    if (!this.props.liveMatchServerId) {
-      return <Progress />
-    }
-
-    const { isLoading, updated, data } = this.props.liveMatchState
-    return (<LiveMatch
-      wsGetLiveMatchDetails={this.props.subscribeToLiveMatch}
-      serverId={this.props.liveMatchServerId}
-      isLoading={isLoading}
-      updated={updated}
-      {...data}
-    />)
   }
 
   render() {
@@ -75,7 +55,7 @@ class HomeView extends React.Component<HomeViewProps> {
           {this.getMatches()}
         </div>
         <div className={'col-md-8 col-lg-9'}>
-          {this.renderLiveMatch()}
+          <LiveMatch server_steam_id={this.props.liveMatchServerId} />
         </div>
       </div>
     )
@@ -84,12 +64,11 @@ class HomeView extends React.Component<HomeViewProps> {
 
 const mapDispatchToProps = {
   loadLiveMatch,
-  subscribeToLiveMatch,
+  setLiveMatchId,
 }
 
 const mapStateToProps = (state: RootState) => ({
   matches: state.home.matches,
-  liveMatchState: state.home.live,
   liveMatchServerId: state.home.server_steam_id
 })
 
