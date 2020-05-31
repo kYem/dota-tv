@@ -13,8 +13,8 @@ const streamsSlice = createSlice({
   name: 'streams',
   initialState,
   reducers: {
-    setStreams(state, action: PayloadAction<Stream[]>) {
-      state.data = action.payload
+    setStreams(state, action: PayloadAction<Stream[]|null>) {
+      state.data = Array.isArray(action.payload) ? action.payload: []
       state.loaded = true
     },
     setError(state, action: PayloadAction<string>) {
