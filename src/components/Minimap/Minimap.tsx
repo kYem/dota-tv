@@ -2,11 +2,12 @@ import React from 'react'
 import miniMap from './1024.jpg'
 import './Minimap.scss'
 import MinimapItem, { mapScale } from './MinimapItem'
+import { Player } from '../../models/LiveMatchData'
 
 const sectionStyle = {
   width: `${mapScale}px`,
   height: `${mapScale}px`,
-  position: 'relative',
+  position: 'relative' as 'relative',
   backgroundImage: `url(${miniMap})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: `${mapScale}px ${mapScale}px`,
@@ -14,12 +15,16 @@ const sectionStyle = {
 }
 
 
-export default class Minimap extends React.Component {
+interface Props {
+  radiant: Player[],
+  dire: Player[],
+}
+
+export default class Minimap extends React.Component<Props> {
 
   static defaultProps = {
     radiant: [],
     dire: [],
-    overlayComp: [],
   }
 
   render() {

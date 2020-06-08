@@ -1,10 +1,11 @@
 import React from 'react'
+import { Player } from '../../models/LiveMatchData';
 
 const heroIconSize = 32
 const mapCenter = 200 - (heroIconSize / 2)
 export const mapScale = 400
 
-export default (player, k) => <i
+export default (player: Player, k: number) => <i
   key={k}
   className={`d2mh hero-${player.hero_id}`}
   style={{
