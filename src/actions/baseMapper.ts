@@ -56,7 +56,7 @@ export default class BaseMapper {
         reference
       }
 
-      this.socket.emit(serviceName, data)
+      this.socket.emit(serviceName, data, reference)
       this.socket.once(`${serviceName}.${reference}`, (response: any) => {
         if (response && response.success) {
           resolve(response.data)
