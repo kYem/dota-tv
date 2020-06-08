@@ -1,8 +1,9 @@
 import React from 'react'
 import './PlayerTable.scss'
 import PlayerRow from './PlayerRow'
+import { Player } from '../../models/LiveMatchData'
 
-const PlayerTable = ({ players }) => (
+const PlayerTable = ({ players }: { players: Player[]}) => (
 
   <table className='ui table player-match-table table-striped'>
     <thead className='thead-dark'>

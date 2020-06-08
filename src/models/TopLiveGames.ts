@@ -29,11 +29,11 @@ export interface Match {
   radiant_lead:      number;
   radiant_score:     number;
   dire_score:        number;
-  players:           Player[];
+  players:           PlayerWithStream[];
   building_state:    number;
 }
 
-export interface Player {
+export interface PlayerWithStream {
   account_id: number;
   hero_id: number;
   hero: Hero

@@ -1,18 +1,24 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './LiveValue.scss'
 
-export default class LiveValue extends React.Component {
+interface LiveValueProps {
+  value: number,
+  includeSymbol: boolean,
+  shouldResetStyle: boolean,
+  positiveClass: string,
+  negativeClass: string,
+  changeClass: string,
+  highlightClass: string,
+}
 
-  static propTypes = {
-    value: PropTypes.number.isRequired,
-    includeSymbol: PropTypes.bool.isRequired,
-    shouldResetStyle: PropTypes.bool.isRequired,
-    positiveClass: PropTypes.string.isRequired,
-    negativeClass: PropTypes.string.isRequired,
-    changeClass: PropTypes.string.isRequired,
-    highlightClass: PropTypes.string.isRequired,
-  }
+interface LiveValueState {
+  positiveNegative: string;
+  isSymbolVisible: boolean;
+  oldValue: number;
+}
+
+export default class LiveValue extends React.Component<LiveValueProps, LiveValueState> {
+
 
   static defaultProps = {
     positiveClass: 'up',
@@ -24,7 +30,7 @@ export default class LiveValue extends React.Component {
   }
 
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: LiveValueProps, state: LiveValueState) {
     let positiveNegative = props.shouldResetStyle ? '' : state.positiveNegative
     if (props.value !== state.oldValue) {
       positiveNegative = props.value > state.oldValue ? props.positiveClass : props.negativeClass
@@ -36,6 +42,7 @@ export default class LiveValue extends React.Component {
   state = {
     positiveNegative: '',
     isSymbolVisible: false,
+    oldValue: 0,
   }
 
   render() {

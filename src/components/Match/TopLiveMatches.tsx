@@ -1,31 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './TopLiveMatches.scss'
 import { getKnownPlayers } from '../../actions/matchProcessing'
 import MatchScore from './MatchScore'
 import IconTwitchGlitch from '../icons/IconTwitchGlitch'
 import RankBadge from '../player/RankBadge'
+import { Match, PlayerWithStream } from '../../models/TopLiveGames';
+import { ExpandedPlayer } from '../../models/Player';
 
-export default class TopLiveMatches extends React.PureComponent {
-  static propTypes = {
-    team_name_radiant: PropTypes.string,
-    team_name_dire: PropTypes.string,
-    average_mmr: PropTypes.number.isRequired,
-    building_state: PropTypes.number.isRequired,
-    deactivate_time: PropTypes.number.isRequired,
-    dire_score: PropTypes.number.isRequired,
-    game_time: PropTypes.number.isRequired,
-    last_update_time: PropTypes.number.isRequired,
-    players: PropTypes.arrayOf(PropTypes.shape({
-      account_id: PropTypes.number.isRequired,
-      hero_id: PropTypes.number.isRequired,
-    }).isRequired),
-    radiant_lead: PropTypes.number.isRequired,
-    radiant_score: PropTypes.number.isRequired,
-    server_steam_id: PropTypes.string.isRequired,
-    spectators: PropTypes.number.isRequired,
-    active: PropTypes.string.isRequired
-  }
+interface TopLiveMatchesProps extends Match {
+  active: string;
+  setLiveMatchId: (id: string) => void;
+}
+
+export default class TopLiveMatches extends React.PureComponent<TopLiveMatchesProps> {
 
   static defaultProps = {
     active: '',
@@ -37,12 +24,12 @@ export default class TopLiveMatches extends React.PureComponent {
     players: []
   };
 
-  changeLiveMatch = (e) => {
+  changeLiveMatch = (e: React.MouseEvent) => {
     e.preventDefault()
     this.props.setLiveMatchId(this.props.server_steam_id)
   }
 
-  renderStreamInfo(player) {
+  renderStreamInfo(player: PlayerWithStream) {
 
     const { id, viewer_count, user_name } = player.stream
 
@@ -97,7 +84,7 @@ export default class TopLiveMatches extends React.PureComponent {
                   className='ml-1 ellipsis flex-grow-1'
                 >
                 <span>
-                  {player.name || player.personaname || (player.stream && player.stream.user_name)}
+                  {this.getPlayerName(player)}
                 </span>
                 </a>
                 <div>{this.renderStreamInfo(player)}</div>
@@ -112,6 +99,18 @@ export default class TopLiveMatches extends React.PureComponent {
         </div>
       </div>
     )
+  }
+
+  private getPlayerName(player: ExpandedPlayer|PlayerWithStream) {
+    if ("name" in player && player.name) {
+      return player.name
+    }
+
+    if ("personaname" in player && player.personaname) {
+      return player.personaname
+    }
+
+    return player.stream && player.stream.user_name;
   }
 }
 

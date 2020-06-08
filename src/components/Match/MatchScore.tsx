@@ -1,18 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './MatchScore.scss'
 import IconVersus from '../icons/IconVersus'
 import IconRadiant from '../icons/IconRadiant'
 import IconDire from '../icons/IconDire'
 
-const propTypes = {
-  team_name_radiant: PropTypes.string.isRequired,
-  team_name_dire: PropTypes.string.isRequired,
-  dire_score: PropTypes.number.isRequired,
-  radiant_score: PropTypes.number.isRequired,
+interface MatchScore {
+  team_name_radiant: string,
+  team_name_dire: string,
+  dire_score: number,
+  radiant_score: number,
 }
 
-const MatchScore = props => (
+const MatchScore = (props: MatchScore) => (
   <div className='match-header'>
     <div className='score radiant'>
       <div className='score-icon'>
@@ -39,7 +38,5 @@ const MatchScore = props => (
     </div>
   </div>
 )
-
-MatchScore.propTypes = propTypes
 
 export default MatchScore
