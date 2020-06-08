@@ -5,7 +5,7 @@ const defaultProps = ({
   height: '16px',
 })
 
-const IconVersus = (props) => {
+const IconVersus = (props: React.SVGProps<SVGSVGElement>) => {
   const mergedProps = { ...defaultProps, ...props }
   return (
     <svg {...mergedProps} className={'versus'} viewBox='0 0 648 981'>

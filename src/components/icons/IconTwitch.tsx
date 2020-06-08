@@ -5,7 +5,7 @@ const defaultProps = ({
   height: '16px',
 })
 
-const IconTwitch = (props) => {
+const IconTwitch = (props: React.SVGProps<SVGSVGElement>) => {
   const mergedProps = { ...defaultProps, ...props }
   return (
     <svg

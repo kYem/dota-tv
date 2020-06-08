@@ -5,7 +5,7 @@ const defaultProps = ({
   height: '16px',
 })
 
-const IconDire = (props) => {
+const IconDire = (props: React.SVGProps<SVGSVGElement>) => {
   const mergedProps = { ...defaultProps, ...props }
   return (
     <svg {...mergedProps} className={'dire'} viewBox='0 0 300 300'>

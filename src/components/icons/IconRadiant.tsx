@@ -5,7 +5,7 @@ const defaultProps = ({
   height: '16px',
 })
 
-const IconRadiant = (props) => {
+const IconRadiant = (props: React.SVGProps<SVGSVGElement>) => {
   const mergedProps = { ...defaultProps, ...props }
   return (
     <svg {...mergedProps} className={'radiant'} viewBox='0 0 300 300'>

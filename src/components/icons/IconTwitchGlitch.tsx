@@ -2,11 +2,11 @@ import React from 'react'
 
 const defaultProps = ({
   fill: '#6441a4',
-  fillRule: 'evenodd',
+  fillRule: 'evenodd' as 'evenodd',
   height: '16px',
 })
 
-const IconTwitchGlitch = (props) => {
+const IconTwitchGlitch = (props: React.SVGProps<SVGSVGElement>) => {
   const mergedProps = { ...defaultProps, ...props }
   return (
     <svg
