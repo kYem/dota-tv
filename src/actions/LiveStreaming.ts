@@ -14,7 +14,6 @@ interface SingleEvent {
 export default class LiveStreaming {
 
   connectLock = false
-  isOpen = false
 
   /** The number of milliseconds to delay before attempting to reconnect. */
   reconnectInterval = 1000
@@ -30,11 +29,16 @@ export default class LiveStreaming {
   events: {[key: string]: SingleEvent } = {}
   subscriptions: {[key: string]: SubEvent} = {}
   private readonly connectionString: string;
-  private socket?: WebSocket
+  private readonly socket: WebSocket
   private timeout?: NodeJS.Timeout;
 
   constructor(wsUri: string) {
     this.connectionString = wsUri
+    this.socket = new WebSocket(this.connectionString)
+    this.socket.onopen = this.sockedOpen
+    this.socket.onmessage = this.onMessage
+    this.socket.onclose = this.onClose
+
     window.addEventListener('beforeunload', () => {
       if (this.socket) {
         this.socket.close()
@@ -42,13 +46,12 @@ export default class LiveStreaming {
     })
   }
 
-  sockedOpen = (onConnect?: Event) => {
-    this.isOpen = true
-  }
+  sockedOpen = () => console.log(`Connected to ${this.connectionString}`)
+
+  isOpen = () => this.socket.readyState === WebSocket.OPEN
 
   onClose = (e: CloseEvent) => {
     console.log(`connection closed (${e.code})`)
-    this.isOpen = false
     this.events = {}
     this.reconnect()
       .catch((error) => {
@@ -58,8 +61,8 @@ export default class LiveStreaming {
   }
 
   reconnect = () => this.connect().then(() => {
-    if (this.isOpen) {
-      console.log('Reconnected')
+    if (this.socket.CLOSED) {
+      console.log(`Reconnected to ${this.connectionString}`)
       Object.values(this.subscriptions).forEach((sub) => {
         this.subscribe(sub.serviceName, sub.parameters, sub.reference, sub.callback)
       })
@@ -80,12 +83,12 @@ export default class LiveStreaming {
   }
 
   emit(event: string, params: {}, reference: string) {
-    this.connect().then(() => this.socket?.send(JSON.stringify({ event, params, reference })))
+    this.connect().then(() => this.socket.send(JSON.stringify({ event, params, reference })))
   }
 
   connect = () => new Promise((resolve, reject) => {
       // Already opened
-    if (this.isOpen) {
+    if (this.isOpen()) {
       resolve()
       return
     }
@@ -96,15 +99,8 @@ export default class LiveStreaming {
     }
 
     this.connectLock = true
-    if (!this.socket || this.socket.readyState !== WebSocket.CONNECTING || this.socket.readyState !== WebSocket.OPEN) {
-      this.socket = new WebSocket(this.connectionString)
-      this.socket.onopen = this.sockedOpen
-      this.socket.onmessage = this.onMessage
-      this.socket.onclose = this.onClose
-    }
-
     const internal = setInterval(() => {
-      if (this.isOpen) {
+      if (this.isOpen()) {
         clearInterval(internal)
         if (this.timeout) {
           clearTimeout(this.timeout)
@@ -137,7 +133,7 @@ export default class LiveStreaming {
    */
   subscribe(serviceName: string, parameters: {}, reference: string, callback: EventCallback) {
     this.connect().then(() => {
-      this.socket?.send(JSON.stringify({
+      this.socket.send(JSON.stringify({
         event: serviceName,
         params: parameters,
         reference
