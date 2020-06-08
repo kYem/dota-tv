@@ -59,7 +59,7 @@ const isMatchComplete = (matchData: LiveMatchData) => {
 export const subscribeToLiveMatch = (serverSteamId: string): AppThunk => dispatch => {
   subscribeLiveMatch(serverSteamId)
   mapper.sub('dota_live_match', { server_steam_id: serverSteamId }, serverSteamId,
-    ({ data }: { data: LiveMatchData }, err: Error) => {
+    ({ data }: { data: LiveMatchData }, err?: Error) => {
       if (err) {
         return dispatch({ type: API_ERROR, payload: err })
       }

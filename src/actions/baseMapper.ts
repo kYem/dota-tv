@@ -1,4 +1,4 @@
-import LiveStreaming from './LiveStreaming'
+import LiveStreaming, { EventCallback } from './LiveStreaming'
 import config from '../project.config';
 import dayjs from 'dayjs';
 
@@ -40,7 +40,7 @@ export default class BaseMapper {
    * with the given resolve and reject functions,
    * or rejected by a thrown exception in resolver
    */
-  sub(serviceName: string, parameters: any, staticReference: string, callback: Function) {
+  sub(serviceName: string, parameters: any, staticReference: string, callback: EventCallback) {
     this.socket.subscribe(serviceName, parameters, staticReference, callback)
   }
 

@@ -1,3 +1,16 @@
+export type EventCallback = (msg: any, err?: Error) => any;
+
+interface SubEvent {
+  reference: string;
+  parameters: any;
+  serviceName: string;
+  callback: EventCallback
+}
+
+interface SingleEvent {
+  callback: EventCallback
+}
+
 export default class LiveStreaming {
 
   connectLock = false
@@ -14,15 +27,14 @@ export default class LiveStreaming {
   /** The maximum number of reconnection attempts to make. Unlimited if null. */
   maxReconnectAttempts = null
 
-  events = {}
-  subscriptions = {}
+  events: {[key: string]: SingleEvent } = {}
+  subscriptions: {[key: string]: SubEvent} = {}
+  private readonly connectionString: string;
+  private socket?: WebSocket
+  private timeout?: NodeJS.Timeout;
 
-  constructor(wsUri) {
+  constructor(wsUri: string) {
     this.connectionString = wsUri
-    this.sockedOpen.bind(this)
-    this.onMessage.bind(this)
-    this.onClose.bind(this)
-
     window.addEventListener('beforeunload', () => {
       if (this.socket) {
         this.socket.close()
@@ -30,14 +42,11 @@ export default class LiveStreaming {
     })
   }
 
-  sockedOpen = (onConnect) => {
+  sockedOpen = (onConnect?: Event) => {
     this.isOpen = true
-    if (typeof onConnect === 'function') {
-      onConnect()
-    }
   }
 
-  onClose = (e) => {
+  onClose = (e: CloseEvent) => {
     console.log(`connection closed (${e.code})`)
     this.isOpen = false
     this.events = {}
@@ -57,7 +66,7 @@ export default class LiveStreaming {
     }
   })
 
-  onMessage = (e) => {
+  onMessage = (e: MessageEvent) => {
     const msg = JSON.parse(e.data)
 
     if (this.subscriptions[msg.event]) {
@@ -70,8 +79,8 @@ export default class LiveStreaming {
     }
   }
 
-  emit(event, params, reference) {
-    this.connect().then(() => this.socket.send(JSON.stringify({ event, params, reference })))
+  emit(event: string, params: {}, reference: string) {
+    this.connect().then(() => this.socket?.send(JSON.stringify({ event, params, reference })))
   }
 
   connect = () => new Promise((resolve, reject) => {
@@ -97,7 +106,9 @@ export default class LiveStreaming {
     const internal = setInterval(() => {
       if (this.isOpen) {
         clearInterval(internal)
-        clearTimeout(this.timeout)
+        if (this.timeout) {
+          clearTimeout(this.timeout)
+        }
         this.connectLock = false
         resolve()
       }
@@ -114,7 +125,7 @@ export default class LiveStreaming {
    * @param event
    * @param callback
    */
-  once(event, callback) {
+  once(event: string, callback: EventCallback) {
     this.events[event] = { callback }
   }
 
@@ -124,9 +135,9 @@ export default class LiveStreaming {
    * @param reference
    * @param callback
    */
-  subscribe(serviceName, parameters, reference, callback) {
+  subscribe(serviceName: string, parameters: {}, reference: string, callback: EventCallback) {
     this.connect().then(() => {
-      this.socket.send(JSON.stringify({
+      this.socket?.send(JSON.stringify({
         event: serviceName,
         params: parameters,
         reference
