@@ -29,7 +29,7 @@ export default class LiveStreaming {
   events: {[key: string]: SingleEvent } = {}
   subscriptions: {[key: string]: SubEvent} = {}
   private readonly connectionString: string;
-  private readonly socket: WebSocket
+  private socket: WebSocket
   private timeout?: NodeJS.Timeout;
 
   constructor(wsUri: string) {
@@ -99,6 +99,14 @@ export default class LiveStreaming {
     }
 
     this.connectLock = true
+    if (!this.socket || this.socket.readyState !== WebSocket.CONNECTING || !this.isOpen()) {
+      this.removeListeners()
+      this.socket = new WebSocket(this.connectionString)
+      this.socket.onopen = this.sockedOpen
+      this.socket.onmessage = this.onMessage
+      this.socket.onclose = this.onClose
+    }
+
     const internal = setInterval(() => {
       if (this.isOpen()) {
         clearInterval(internal)
@@ -116,6 +124,12 @@ export default class LiveStreaming {
       reject(`Failed to reconnect within ${this.timeoutInterval}`)
     }, this.timeoutInterval)
   })
+
+  removeListeners() {
+    this.socket.removeEventListener('open', this.sockedOpen);
+    this.socket.removeEventListener('close', this.onClose);
+    this.socket.removeEventListener('message', this.onMessage);
+  }
 
   /**
    * @param event
