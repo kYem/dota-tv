@@ -25,10 +25,10 @@ class App extends React.Component {
                   <div className='logo-name-container navbar-brand'>
                     <h1>Dota Tv</h1>
                   </div>
-                  <div className='collapse navbar-collapse' id='navbarTogglerDemo02'>
+                  <div className='collapse navbar-collapse'>
                     <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
                       <li className='nav-item'>
-                        <NavLink to='/' className='nav-link' activeClassName='active'>
+                        <NavLink to='/' exact className='nav-link' activeClassName='active'>
                           Home
                         </NavLink>
                       </li>

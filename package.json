@@ -30,7 +30,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/webpack-env": "^1.15.2",
     "env-cmd": "^10.1.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^5.0.0",
     "typescript": "^3.9.5"
   },
   "scripts": {
