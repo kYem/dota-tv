@@ -20,7 +20,8 @@
     "noImplicitAny": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "jsx": "react"
+    "jsx": "react",
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
