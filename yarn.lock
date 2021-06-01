@@ -4880,10 +4880,10 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dota2-minimap-hero-sprites@^2.2.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/dota2-minimap-hero-sprites/-/dota2-minimap-hero-sprites-2.3.0.tgz#c07e3f7c6296055409da82fa320e5e450c7de8b0"
-  integrity sha512-gDDZiSlmQy592jmgHekx/ti58sHRA0ZS35SD/isAtSLjxtcaZ09GVJxKPel00eSiPuY4p/T+eRXSRlCVWflCtA==
+dota2-minimap-hero-sprites@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/dota2-minimap-hero-sprites/-/dota2-minimap-hero-sprites-2.4.0.tgz#b5bd61d35ce079da93e2433afa455aeb05f1fad1"
+  integrity sha512-S7pSefGB91UcHC/RI8tG4l+OamJVNw4pG92QUdzSlDmy+zO5CwHrU0QdUAHn0ZyXgW9VG03DszRXBdA+30y10w==
 
 dotenv-expand@5.1.0:
   version "5.1.0"
@@ -12516,15 +12516,7 @@ url-loader@4.1.1:
     mime-types "^2.1.27"
     schema-utils "^3.0.0"
 
-url-parse@^1.4.3:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
-  integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
-  dependencies:
-    querystringify "^2.1.1"
-    requires-port "^1.0.0"
-
-url-parse@^1.5.1:
+url-parse@^1.4.3, url-parse@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
   integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
