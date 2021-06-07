@@ -40,7 +40,7 @@ class PlayerRow extends React.Component<PlayerRowProps> {
       <tr className='player-row'>
         <td className='player-name'>
           <img src={hero?.image} alt={hero?.name} className='rounded image hero-image' />
-          <span className='ml-1'>
+          <span className='mx-1'>
             {team_tag}
             <a
               href={`https://www.dotabuff.com/players/${account_id}`}
