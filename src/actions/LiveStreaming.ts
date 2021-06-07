@@ -19,7 +19,7 @@ export default class LiveStreaming {
   reconnectInterval = 1000
   /** The maximum number of milliseconds to delay a reconnection attempt. */
   maxReconnectInterval = 30000
-  /** The rate of increase of the reconnect delay. Allows reconnect attempts to back off when problems persist. */
+  /** The rate of increase to reconnect delay. Allows reconnecting attempts to back off when problems persist. */
   reconnectDecay = 1.5
   /** The maximum time in milliseconds to wait for a connection to succeed before closing and retrying. */
   timeoutInterval = 4000
@@ -89,7 +89,7 @@ export default class LiveStreaming {
   connect = () => new Promise((resolve, reject) => {
       // Already opened
     if (this.isOpen()) {
-      resolve()
+      resolve(undefined)
       return
     }
 
@@ -114,7 +114,7 @@ export default class LiveStreaming {
           clearTimeout(this.timeout)
         }
         this.connectLock = false
-        resolve()
+        resolve(undefined)
       }
     }, this.reconnectInterval)
     this.timeout = setTimeout(() => {
