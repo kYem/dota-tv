@@ -81,7 +81,7 @@ export default class TopLiveMatches extends React.PureComponent<TopLiveMatchesPr
                   href={`https://www.dotabuff.com/players/${player.account_id}`}
                   target='_blank'
                   rel="noopener noreferrer"
-                  className='ml-1 ellipsis flex-grow-1'
+                  className='mx-2 ellipsis flex-grow-1'
                 >
                 <span>
                   {this.getPlayerName(player)}

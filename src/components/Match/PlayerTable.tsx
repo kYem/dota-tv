@@ -5,8 +5,8 @@ import { Player } from '../../models/LiveMatchData'
 
 const PlayerTable = ({ players }: { players: Player[]}) => (
 
-  <table className='ui table player-match-table table-striped'>
-    <thead className='thead-dark'>
+  <table className='table player-match-table table-striped table-hover'>
+    <thead className='table-dark'>
       <tr>
         <th>Player</th>
         <th>Level</th>

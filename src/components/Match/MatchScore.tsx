@@ -4,14 +4,14 @@ import IconVersus from '../icons/IconVersus'
 import IconRadiant from '../icons/IconRadiant'
 import IconDire from '../icons/IconDire'
 
-interface MatchScore {
+interface Props {
   team_name_radiant: string,
   team_name_dire: string,
   dire_score: number,
   radiant_score: number,
 }
 
-const MatchScore = (props: MatchScore) => (
+const MatchScore = (props: Props) => (
   <div className='match-header'>
     <div className='score radiant'>
       <div className='score-icon'>
