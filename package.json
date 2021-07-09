@@ -15,7 +15,7 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^4.0.3",
-    "typeface-roboto": "^0.0.75"
+    "fontsource-roboto": "^4.0.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.31.0",
