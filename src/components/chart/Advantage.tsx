@@ -1,7 +1,8 @@
 import React from 'react'
 import Chart from "react-apexcharts";
+import { ApexOptions } from 'apexcharts';
 
-const options = {
+const options: ApexOptions = {
   chart: {
     id: "basic-bar",
     toolbar: {
@@ -9,7 +10,7 @@ const options = {
     },
   },
   xaxis: {
-    type: "categories",
+    type: "category",
     categories: [],
     labels: {
       show: false

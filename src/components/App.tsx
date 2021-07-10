@@ -1,5 +1,5 @@
 import React from 'react'
-import 'typeface-roboto'
+import 'fontsource-roboto'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import HomeView from '../routes/Home/HomeView'
