@@ -38,7 +38,10 @@ export const LiveMatch = ({ server_steam_id }: LiveMatchProps) => {
   }
   const graphGold = graph_data.graph_gold
   const lastAdvantageTick = graphGold[graphGold.length - 1]
-  const teamAdvantage = <LiveValue shouldResetStyle={false} value={Math.abs(lastAdvantageTick)} />
+  const teamAdvantage =  <span className={'advantage-container'}>
+    <img width={'24'} src={'/images/stacked-gold-coins-transparent.png'} alt={'gold'} />
+    <LiveValue shouldResetStyle={false} value={Math.abs(lastAdvantageTick)} />
+  </span>
   return (
     <div className='liveMatch'>
       <header>

@@ -9,6 +9,11 @@
       flex-basis: 20%;
     }
 
+    .advantage-container {
+      display: flex;
+      align-items: center;
+    }
+
     .match-score-container {
       flex-grow: 1;
     }
