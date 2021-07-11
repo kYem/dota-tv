@@ -42,7 +42,7 @@ export default class TopLiveMatches extends React.PureComponent<TopLiveMatchesPr
         <div className=''>
           <IconTwitchGlitch />
         </div>
-        <div className='ml-1' title={user_name}>{viewer_count}</div>
+        <div className='mx-1' title={user_name}>{viewer_count}</div>
       </div>
     )
   }
