@@ -40,9 +40,11 @@ export default class TopLiveMatches extends React.PureComponent<TopLiveMatchesPr
     return (
       <div className='stream-info'>
         <div className=''>
+          <a title={user_name} href={`https://www.twitch.tv/${user_name}`} target={'_blank'} rel={'noopener nofollow'} >
           <IconTwitchGlitch />
+          </a>
         </div>
-        <div className='mx-1' title={user_name}>{viewer_count}</div>
+        <div className='mx-1'>{viewer_count}</div>
       </div>
     )
   }

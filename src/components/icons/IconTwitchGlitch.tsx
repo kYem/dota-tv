@@ -16,7 +16,6 @@ const IconTwitchGlitch = (props: React.SVGProps<SVGSVGElement>) => {
       data-name='Layer 1'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <title>Twitch</title>
       <path
         fill={props.fill}
         fillRule={props.fillRule}
