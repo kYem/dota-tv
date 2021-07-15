@@ -36,8 +36,10 @@ export interface Match {
 export interface PlayerWithStream {
   account_id: number;
   hero_id: number;
+  name: string;
   hero: Hero
   stream: Stream;
   seasonLeaderboardRank?: number;
+  is_pro: boolean
 }
 

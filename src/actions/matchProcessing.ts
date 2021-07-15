@@ -1,5 +1,5 @@
 import { Match, PlayerWithStream } from '../models/TopLiveGames';
-import { ExpandedPlayer, ProPlayer } from '../models/Player';
+import { ProPlayer } from '../models/Player';
 const proPlayers = require('../data/pro-players.json')
 
 export function mapAccountToPlayer(playerObject: PlayerWithStream) {
@@ -23,14 +23,11 @@ export function matchToPlayers(match: Match) {
   return match
 }
 
-export function getKnownPlayers(players: (ExpandedPlayer|PlayerWithStream)[]) {
+export function getKnownPlayers(players: PlayerWithStream[]) {
   if (!players) {
     return []
   }
-  return players.filter(player => {
-    return ('is_pro' in player && player.is_pro)
-      || (player.stream && player.stream.id);
-  })
+  return players.filter(player => player.is_pro || player.stream?.id)
 }
 
 export function gameTime(time: number) {

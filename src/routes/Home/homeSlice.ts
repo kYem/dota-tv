@@ -19,13 +19,12 @@ const homeSlice = createSlice({
   initialState,
   reducers: {
     setLiveMatches: (state, action: PayloadAction<TopLiveGames>) => {
-      const gameMatches = action.payload.game_list
+      const matches = action.payload.game_list
 
-      if (!gameMatches) {
+      if (!matches) {
         return { ...state, matches: [] }
       }
 
-      const matches = gameMatches.map((match: Match) => matchToPlayers(match))
       let steamId = state.server_steam_id
       if (steamId === '') {
         steamId = matches[0].server_steam_id

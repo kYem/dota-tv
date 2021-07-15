@@ -5,7 +5,6 @@ import MatchScore from './MatchScore'
 import IconTwitchGlitch from '../icons/IconTwitchGlitch'
 import RankBadge from '../player/RankBadge'
 import { Match, PlayerWithStream } from '../../models/TopLiveGames';
-import { ExpandedPlayer } from '../../models/Player';
 
 interface TopLiveMatchesProps extends Match {
   active: string;
@@ -74,8 +73,8 @@ export default class TopLiveMatches extends React.PureComponent<TopLiveMatchesPr
           {knownPlayers.map(player => (
             <div className='player align-items-center d-flex mt-2 mb-2' key={player.account_id}>
               <img
-                src={player.hero?.image}
-                alt={player.hero?.name}
+                src={player.hero.image}
+                alt={player.hero.name}
                 className='rounded hero-image'
               />
               <div className='d-flex flex-grow-1 align-items-center ellipsis'>
@@ -103,16 +102,8 @@ export default class TopLiveMatches extends React.PureComponent<TopLiveMatchesPr
     )
   }
 
-  private getPlayerName(player: ExpandedPlayer|PlayerWithStream) {
-    if ("name" in player && player.name) {
-      return player.name
-    }
-
-    if ("personaname" in player && player.personaname) {
-      return player.personaname
-    }
-
-    return player.stream && player.stream.user_name;
+  private getPlayerName(player: PlayerWithStream) {
+    return player.name || player.stream.user_name;
   }
 }
 
