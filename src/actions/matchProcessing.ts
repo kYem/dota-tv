@@ -1,27 +1,4 @@
-import { Match, PlayerWithStream } from '../models/TopLiveGames';
-import { ProPlayer } from '../models/Player';
-const proPlayers = require('../data/pro-players.json')
-
-export function mapAccountToPlayer(playerObject: PlayerWithStream) {
-  return Object.assign(
-    playerObject,
-    proPlayers.find((player: ProPlayer) => player.account_id === playerObject.account_id),
-    {
-      hero: {
-        ...playerObject.hero,
-        image: playerObject.hero.image || '/images/heroes/unknown-hero.jpeg'
-      }
-    }
-  )
-}
-
-export function matchToPlayers(match: Match) {
-  if (!match || !match.players) {
-    return match
-  }
-  match.players.map(mapAccountToPlayer)
-  return match
-}
+import { PlayerWithStream } from '../models/TopLiveGames';
 
 export function getKnownPlayers(players: PlayerWithStream[]) {
   if (!players) {

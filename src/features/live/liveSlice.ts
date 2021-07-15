@@ -1,4 +1,3 @@
-import { mapAccountToPlayer } from '../../actions/matchProcessing'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { LiveMatchData } from '../../models/LiveMatchData'
 import { mapper, API_ERROR, } from '../../actions/api'
@@ -28,9 +27,6 @@ const homeSlice = createSlice({
     },
     setLiveMatchDetails : (state, action: PayloadAction<LiveMatchData>) => {
       const payload = action.payload
-      payload.teams.forEach((team: any) => {
-        team.players.map((player: any) => mapAccountToPlayer(player))
-      })
 
       state.isLoading = false;
       state.updated = Date.now()
