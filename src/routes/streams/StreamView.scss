@@ -1,0 +1,10 @@
+
+.stream-view-item {
+  h6 {
+    display: flex;
+    .stream-view-count {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

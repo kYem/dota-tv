@@ -16,14 +16,13 @@ interface StreamViewProp {
 
 class StreamView extends React.Component<StreamViewProp> {
 
-
   static defaultProps = {
     streams: [],
     loaded: false,
   }
 
   state: { active: string[] } = {
-    active: []
+    active: [],
   }
 
   componentDidMount() {
@@ -58,8 +57,8 @@ class StreamView extends React.Component<StreamViewProp> {
 
   renderView(count: number) {
     return (
-      <span>
-        <i className='material-icons text-danger md-18 mr-2'>remove_red_eye</i>
+      <span className={'stream-view-count'}>
+        <i className='material-icons text-danger md-18 mx-1'>remove_red_eye</i>
         <span>{count}</span>
       </span>
     )
@@ -67,7 +66,7 @@ class StreamView extends React.Component<StreamViewProp> {
 
   renderItem(stream: Stream) {
     return (
-      <div>
+      <div className={'stream-view-item'}>
         <h6>{stream.user_name} - {this.renderView(stream.viewer_count)}</h6>
         {this.state.active.includes(stream.user_name) ?
           <TwitchPlayer
@@ -84,17 +83,13 @@ class StreamView extends React.Component<StreamViewProp> {
   }
 
   render() {
-    if (!this.props.loaded) {
+    const { streams, loaded } = this.props;
+    if (!loaded) {
       return <Loader />
     }
     return (
       <div style={{ margin: '0 auto' }}>
-        {
-          this.props.streams.length === 0 ?
-            <h6>No streams found</h6>
-            : this.renderList()
-
-        }
+        {streams.length === 0 ? <h6>No streams found</h6> : this.renderList()}
       </div>
     )
   }
@@ -108,7 +103,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state: RootState) => ({
   streams: state.streams.data,
-  loaded: state.streams.loaded
+  loaded: state.streams.loaded,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(StreamView)
