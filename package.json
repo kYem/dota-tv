@@ -10,6 +10,7 @@
     "dayjs": "^1.10.5",
     "dota2-minimap-hero-sprites": "^2.4.0",
     "fontsource-roboto": "^4.0.0",
+    "material-icons": "^1.10.2",
     "react": "^18.0.0-beta-fdc1d617a-20211118",
     "react-apexcharts": "^1.3.9",
     "react-dom": "^18.0.0-beta-fdc1d617a-20211118",

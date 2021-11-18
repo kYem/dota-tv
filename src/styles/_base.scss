@@ -11,4 +11,5 @@ For example:
 @import './themes/default';
 */
 
-@import "material-icons";
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~material-icons/iconfont/material-icons.css';
