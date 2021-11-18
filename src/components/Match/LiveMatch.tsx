@@ -7,7 +7,7 @@ import Progress from '../Progress'
 import Minimap from '../Minimap/Minimap'
 import MatchScore from './MatchScore'
 import Advantage from '../chart/Advantage'
-import { subscribeToLiveMatch } from '../../features/live/liveSlice';
+import { subscribeToLiveMatch } from '../../features/liveSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 interface LiveMatchProps {

@@ -2,7 +2,7 @@ import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 
 import homeReducer from '../routes/Home/homeSlice';
 import streamReducer from '../routes/streams/streamSlice';
-import liveReducer from '../features/live/liveSlice';
+import liveReducer from '../features/liveSlice';
 
 const store = configureStore({
   reducer: {

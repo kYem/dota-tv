@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { LiveMatchData } from '../../models/LiveMatchData'
-import { mapper, API_ERROR, } from '../../actions/api'
-import { AppThunk } from '../../store/store'
-import { setLiveMatchFinished } from '../../routes/Home/homeSlice'
+import { LiveMatchData } from '../models/LiveMatchData'
+import { mapper, API_ERROR, } from '../actions/api'
+import { AppThunk } from '../store/store'
+import { setLiveMatchFinished } from '../routes/Home/homeSlice'
 
 interface LiveMatchState {
   server_steam_id: string;
