@@ -50,7 +50,7 @@ export const loadLiveMatch = (partner = 0): AppThunk => async dispatch => {
     (matchData: TopLiveGames) => {
       dispatch(setLiveMatches(matchData))
     },
-    err => dispatch({ type: API_ERROR, payload: err })
+    err => dispatch({ type: API_ERROR, payload: err.message })
   )
 }
 
