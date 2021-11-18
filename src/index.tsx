@@ -4,7 +4,16 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const container = document.getElementById('root');
+if (!container) {
+  throw new Error(`Missing container element root`)
+}
+const root = ReactDOM.createRoot(container);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -5,8 +5,8 @@ import TopLiveMatches from '../../components/Match/TopLiveMatches'
 import { LiveMatch } from '../../components/Match/LiveMatch'
 import Progress from '../../components/Progress'
 import { loadLiveMatch, setLiveMatchId } from './homeSlice'
-import { RootState } from '../../store/rootReducer'
 import { Match } from '../../models/TopLiveGames'
+import { RootState } from '../../store/store';
 
 interface HomeViewProps {
   loadLiveMatch: () => void,

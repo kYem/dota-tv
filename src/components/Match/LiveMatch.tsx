@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import './LiveMatch.scss'
 import PlayerTable from './PlayerTable'
 import { gameTime } from '../../actions/matchProcessing'
@@ -8,8 +7,8 @@ import Progress from '../Progress'
 import Minimap from '../Minimap/Minimap'
 import MatchScore from './MatchScore'
 import Advantage from '../chart/Advantage'
-import { RootState } from '../../store/rootReducer';
 import { subscribeToLiveMatch } from '../../features/live/liveSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 interface LiveMatchProps {
  server_steam_id: string
@@ -17,8 +16,8 @@ interface LiveMatchProps {
 
 export const LiveMatch = ({ server_steam_id }: LiveMatchProps) => {
 
-  const dispatch = useDispatch();
-  const { isLoading, data } = useSelector((state: RootState) => state.live)
+  const dispatch = useAppDispatch();
+  const { isLoading, data } = useAppSelector((state) => state.live)
 
   useEffect(() => {
     if (server_steam_id) {

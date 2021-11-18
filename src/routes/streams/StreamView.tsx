@@ -5,7 +5,7 @@ import Loader from '../../components/loader/Loader'
 import TwitchPlayer from '../../components/twitch/TwitchPlayer'
 import { getLiveStreamsDetails } from './streamSlice'
 import { Stream } from '../../models/Stream'
-import { RootState } from '../../store/rootReducer'
+import { RootState } from '../../store/store';
 
 
 interface StreamViewProp {
