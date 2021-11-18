@@ -4,13 +4,13 @@ import { API_ERROR, getLiveMatches } from '../../actions/api'
 import { AppThunk } from '../../store/store'
 
 interface InitialState {
-  server_steam_id: string;
+  serverId: string;
   matches: Match[];
 }
 
 const initialState: InitialState = {
   matches: [],
-  server_steam_id: '',
+  serverId: '',
 }
 
 const homeSlice = createSlice({
@@ -24,19 +24,15 @@ const homeSlice = createSlice({
         return { ...state, matches: [] }
       }
 
-      let steamId = state.server_steam_id
-      if (steamId === '') {
-        steamId = matches[0].server_steam_id
-      }
-
-      return { ...state, matches, server_steam_id: steamId }
+      const steamId = state.serverId || matches[0].server_steam_id;
+      return { ...state, matches, serverId: steamId }
     },
     setLiveMatchId: (state, action) => {
-      state.server_steam_id = action.payload
+      state.serverId = action.payload
       return state;
     },
     setLiveMatchFinished: (state) => {
-      state.server_steam_id = ''
+      state.serverId = ''
       return state
     }
   }

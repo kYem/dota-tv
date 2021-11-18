@@ -2,7 +2,7 @@ import React from 'react'
 import 'fontsource-roboto'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, NavLink, Routes } from 'react-router-dom'
-import HomeView from '../routes/Home/HomeView'
+import { Home } from '../routes/Home/Home'
 import StreamView from '../routes/streams/StreamView'
 import store from '../store/store'
 import '../styles/main.scss'
@@ -37,7 +37,7 @@ const App = () => {
           <div className='container main-container'>
             <div className='page-layout__viewport'>
               <Routes>
-                <Route path='/' element={<HomeView />} />
+                <Route path='/' element={<Home />} />
                 <Route path='/streams' element={<StreamView />} />
               </Routes>
             </div>

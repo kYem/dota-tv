@@ -11,21 +11,21 @@ import { subscribeToLiveMatch } from '../../features/live/liveSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 interface LiveMatchProps {
- server_steam_id: string
+  serverId: string
 }
 
-export const LiveMatch = ({ server_steam_id }: LiveMatchProps) => {
+export const LiveMatch = ({ serverId }: LiveMatchProps) => {
 
   const dispatch = useAppDispatch();
   const { isLoading, data } = useAppSelector((state) => state.live)
 
   useEffect(() => {
-    if (server_steam_id) {
-      dispatch(subscribeToLiveMatch(server_steam_id))
+    if (serverId) {
+      dispatch(subscribeToLiveMatch(serverId))
     }
-  }, [dispatch, server_steam_id])
+  }, [dispatch, serverId])
 
-  if (isLoading || !server_steam_id || !data) {
+  if (isLoading || !serverId || !data) {
     return <Progress />
   }
 
