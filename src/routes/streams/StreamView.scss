@@ -1,10 +1,18 @@
 
-.stream-view-item {
-  h6 {
-    display: flex;
-    .stream-view-count {
+.stream-view-container {
+
+  &.disabled {
+    background-color: gray;
+  }
+
+  .stream-view-item {
+    h6 {
       display: flex;
-      align-items: center;
+      .stream-view-count {
+        display: flex;
+        align-items: center;
+      }
     }
   }
+
 }

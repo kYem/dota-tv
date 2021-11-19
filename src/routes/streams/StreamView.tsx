@@ -1,38 +1,32 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
 import './StreamView.scss'
 import Loader from '../../components/loader/Loader'
 import TwitchPlayer from '../../components/twitch/TwitchPlayer'
-import { getLiveStreamsDetails } from './streamSlice'
 import { Stream } from '../../models/Stream'
-import { RootState } from '../../store/store';
+import { useGetLiveStreamsQuery } from '../../actions/api';
 
 
-interface StreamViewProp {
-  streams: Stream[],
-  getLiveStreamsDetails: () => void,
-  loaded: boolean,
-}
+export const StreamView = () => {
 
-class StreamView extends React.Component<StreamViewProp> {
+  const [active, setActive] = useState<string[]>([])
+  const result = useGetLiveStreamsQuery()
 
-  static defaultProps = {
-    streams: [],
-    loaded: false,
+
+  if (result.isError) {
+    return <div><h1>{String(result.error)}</h1></div>
   }
 
-  state: { active: string[] } = {
-    active: [],
+  if (result.isLoading) {
+    return <Loader />
   }
 
-  componentDidMount() {
-    this.props.getLiveStreamsDetails()
+  if (!result.isSuccess) {
+    return <h1>Not Success</h1>
   }
 
-
-  toggleView = (stream: Stream) => {
+  const toggleView = (stream: Stream) => {
     const key = stream.user_name
-    const activeList = [...this.state.active]
+    const activeList = [...active]
     const index = activeList.indexOf(key)
     if (index > -1) {
       activeList.splice(index, 1)
@@ -40,71 +34,46 @@ class StreamView extends React.Component<StreamViewProp> {
       activeList.push(key)
     }
 
-    this.setState({ active: activeList })
+    setActive(activeList)
   }
 
-  renderList() {
+  const renderView = (count: number) => {
     return (
-      <ul className='list-group'>
-        {this.props.streams.map(v =>
-          (<li onClick={() => this.toggleView(v)} className='list-group-item' key={v.id}>
-            {this.renderItem(v)}
+      <span className={'stream-view-count'}>
+        <i className="material-icons text-danger md-18 mx-1">remove_red_eye</i>
+        <span>{count}</span>
+      </span>
+    )
+  }
+
+  const renderList = (streams: Stream[]) => {
+    return (
+      <ul className={`list-group`}>
+        {streams.map(stream =>
+          (<li onClick={() => toggleView(stream)} className='list-group-item' key={stream.id}>
+            <div className={'stream-view-item'}>
+              <h6>{stream.user_name} - {renderView(stream.viewer_count)}</h6>
+              {active.includes(stream.user_name) ?
+                <TwitchPlayer
+                  theme={'dark'}
+                  width={'100%'}
+                  targetClass={`twitch_${stream.user_id}`}
+                  channel={stream.user_name}
+                />
+                :
+                ''
+              }
+            </div>
           </li>)
         )}
       </ul>
     )
   }
 
-  renderView(count: number) {
-    return (
-      <span className={'stream-view-count'}>
-        <i className='material-icons text-danger md-18 mx-1'>remove_red_eye</i>
-        <span>{count}</span>
-      </span>
-    )
-  }
-
-  renderItem(stream: Stream) {
-    return (
-      <div className={'stream-view-item'}>
-        <h6>{stream.user_name} - {this.renderView(stream.viewer_count)}</h6>
-        {this.state.active.includes(stream.user_name) ?
-          <TwitchPlayer
-            theme={'dark'}
-            width={'100%'}
-            targetClass={`twitch_${stream.user_id}`}
-            channel={stream.user_name}
-          />
-          :
-          ''
-        }
-      </div>
-    )
-  }
-
-  render() {
-    const { streams, loaded } = this.props;
-    if (!loaded) {
-      return <Loader />
-    }
-    return (
-      <div style={{ margin: '0 auto' }}>
-        {streams.length === 0 ? <h6>No streams found</h6> : this.renderList()}
-      </div>
-    )
-  }
-
+  return (
+    <div style={{ margin: '0 auto' }} className={`stream-view-container ${result.isFetching ? 'disabled':''}`}>
+      {result.data.length === 0 ? <h6>No streams found</h6> : renderList(result.data)}
+      <button onClick={result.refetch}>Refetch Posts</button>
+    </div>
+  )
 }
-
-
-const mapDispatchToProps = {
-  getLiveStreamsDetails,
-}
-
-const mapStateToProps = (state: RootState) => ({
-  streams: state.streams.data,
-  loaded: state.streams.loaded,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(StreamView)
-

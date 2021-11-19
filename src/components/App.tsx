@@ -3,7 +3,7 @@ import 'fontsource-roboto'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, NavLink, Routes } from 'react-router-dom'
 import { Home } from '../routes/Home/Home'
-import StreamView from '../routes/streams/StreamView'
+import { StreamView } from '../routes/streams/StreamView'
 import store from '../store/store'
 import '../styles/main.scss'
 
