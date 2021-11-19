@@ -9,7 +9,7 @@ import { useGetLiveStreamsQuery } from '../../actions/api';
 export const StreamView = () => {
 
   const [active, setActive] = useState<string[]>([])
-  const result = useGetLiveStreamsQuery()
+  const result = useGetLiveStreamsQuery(undefined, { pollingInterval: 60000 })
 
 
   if (result.isError) {
