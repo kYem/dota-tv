@@ -1528,7 +1528,8 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react@^12.0.0":
+"@testing-library/react-12@npm:@testing-library/react@^12", "@testing-library/react@^12.0.0":
+  name "@testing-library/react-12"
   version "12.1.2"
   resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-12.1.2.tgz#f1bc9a45943461fa2a598bb4597df1ae044cfc76"
   integrity sha512-ihQiEOklNyHIpo2Y8FREkyD1QAea054U0MVbwH1m8N9TxeFz+KoJ9LkqoKqJlzx2JDm56DVwaJ1r36JYxZM05g==
@@ -1632,7 +1633,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
+"@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
@@ -1736,16 +1737,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-redux@^7.1.20":
-  version "7.1.20"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.20.tgz#42f0e61ababb621e12c66c96dda94c58423bd7df"
-  integrity sha512-q42es4c8iIeTgcnB+yJgRTTzftv3eYYvCZOh1Ckn2eX/3o5TdsQYKUWpLoLuGlcY/p+VAhV9IOEZJcWk/vfkXw==
-  dependencies:
-    "@types/hoist-non-react-statics" "^3.3.0"
-    "@types/react" "*"
-    hoist-non-react-statics "^3.3.0"
-    redux "^4.0.0"
-
 "@types/react@*", "@types/react@^17.0.35":
   version "17.0.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.35.tgz#217164cf830267d56cd1aec09dcf25a541eedd4c"
@@ -1789,10 +1780,10 @@
   resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-2.0.2.tgz#fc25ad9943bcac11cceb8168db4f275e0e72e756"
   integrity sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==
 
-"@types/use-sync-external-store@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@types/use-sync-external-store/-/use-sync-external-store-0.0.0.tgz#ec2ebe41a1288e3d5d80aacc4a4c2873db4aafa8"
-  integrity sha512-dtA1bGSTAyPAcged3AjG9r3BOUzznqgpZkK8HnVrlOOkZunfKnqJikykxUg3xOrBvgGbROLNptpJLflqp8KvkQ==
+"@types/use-sync-external-store@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@types/use-sync-external-store/-/use-sync-external-store-0.0.3.tgz#b6725d5f4af24ace33b36fafd295136e75509f43"
+  integrity sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==
 
 "@types/webpack-env@^1.15.2":
   version "1.16.3"
@@ -7603,6 +7594,14 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+"react-17@npm:react@^17":
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
 react-apexcharts@^1.3.9:
   version "1.3.9"
   resolved "https://registry.yarnpkg.com/react-apexcharts/-/react-apexcharts-1.3.9.tgz#d97e53fd513dc6ff73b90c2364c3bdd88d8dad01"
@@ -7652,6 +7651,15 @@ react-dev-utils@12.0.0-next.47+1465357b:
     strip-ansi "^6.0.0"
     text-table "^0.2.0"
 
+"react-dom-17@npm:react-dom@^17":
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
+  integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    scheduler "^0.20.2"
+
 react-dom@^18.0.0-beta-fdc1d617a-20211118:
   version "18.0.0-beta-fdc1d617a-20211118"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0-beta-fdc1d617a-20211118.tgz#0d2ddaa962fae1bbcf17c0eac5e3879d30793753"
@@ -7666,28 +7674,36 @@ react-error-overlay@7.0.0-next.54+1465357b:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-7.0.0-next.54.tgz#c1eb5ab86aee15e9552e6d97897b08f2bd06d140"
   integrity sha512-b96CiTnZahXPDNH9MKplvt5+jD+BkxDw7q5R3jnkUXze/ux1pLv32BBZmlj0OfCUeMqyz4sAmF+0ccJGVMlpXw==
 
-react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
-  version "16.13.1"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
-  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-is@^17.0.1:
+"react-is@^16.12.0 || ^17.0.0", react-is@^17.0.1, react-is@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-redux@^8.0.0-alpha.1:
-  version "8.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-8.0.0-alpha.1.tgz#7336f7ff8548633ace7faca51e82b38610ef341d"
-  integrity sha512-V6DYdFbhJiPYblvWTjbTLTEgw9MICEHm1BhpA/UsEupZcCTeuPHgaabQiGUzyFoa7iaFEc7OGalS97rXRoG0Tg==
+react-is@^16.7.0, react-is@^16.8.1:
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
+  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-is@^18.0.0-beta-fdc1d617a-20211118:
+  version "18.0.0-beta-fdc1d617a-20211118"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.0.0-beta-fdc1d617a-20211118.tgz#7ff54727761254ec7fb2bf1cffdd7e55a3ab06ca"
+  integrity sha512-nEbMn7vxsRFB770FBuGS4avp0c/1vVpvQubw4oxv2Du/eY2UXvAXmzn1sEJ5eYwbadi9vS1pDDSSHv8+M6Ux7A==
+
+react-redux@^8.0.0-beta.1:
+  version "8.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-8.0.0-beta.1.tgz#04dab8442cdff323668d02cfa3ddce71576bbdb0"
+  integrity sha512-GX6azXYU4lK76fNQtMbNOqCjlehhNys3QPTX9Usu8phHLmwsc3DiaI1h60dnIE0ERnWEo63N9EzIpY2z5T5ORA==
   dependencies:
     "@babel/runtime" "^7.12.1"
+    "@testing-library/react-12" "npm:@testing-library/react@^12"
     "@types/hoist-non-react-statics" "^3.3.1"
-    "@types/use-sync-external-store" "^0.0.0"
+    "@types/use-sync-external-store" "^0.0.3"
     hoist-non-react-statics "^3.3.2"
-    loose-envify "^1.4.0"
-    react-is "^16.13.1"
-    use-sync-external-store "1.0.0-alpha-5cccacd13-20211101"
+    react-17 "npm:react@^17"
+    react-dom-17 "npm:react-dom@^17"
+    react-is "^18.0.0-beta-fdc1d617a-20211118"
+    react-test-renderer-17 "npm:react-test-renderer@^17"
+    use-sync-external-store "1.0.0-beta-fdc1d617a-20211118"
 
 react-refresh@^0.10.0:
   version "0.10.0"
@@ -7762,6 +7778,24 @@ react-scripts@^5.0.0-next.47:
     workbox-webpack-plugin "^6.2.4"
   optionalDependencies:
     fsevents "^2.1.3"
+
+react-shallow-renderer@^16.13.1:
+  version "16.14.1"
+  resolved "https://registry.yarnpkg.com/react-shallow-renderer/-/react-shallow-renderer-16.14.1.tgz#bf0d02df8a519a558fd9b8215442efa5c840e124"
+  integrity sha512-rkIMcQi01/+kxiTE9D3fdS959U1g7gs+/rborw++42m1O9FAQiNI/UNRZExVUoAOprn4umcXf+pFRou8i4zuBg==
+  dependencies:
+    object-assign "^4.1.1"
+    react-is "^16.12.0 || ^17.0.0"
+
+"react-test-renderer-17@npm:react-test-renderer@^17":
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-17.0.2.tgz#4cd4ae5ef1ad5670fc0ef776e8cc7e1231d9866c"
+  integrity sha512-yaQ9cB89c17PUb0x6UfWRs7kQCorVdHlutU1boVPEsB8IDZH6n9tHxMacc3y0JoXOJUsZb/t/Mb8FUWMKaM7iQ==
+  dependencies:
+    object-assign "^4.1.1"
+    react-is "^17.0.2"
+    react-shallow-renderer "^16.13.1"
+    scheduler "^0.20.2"
 
 react@^18.0.0-beta-fdc1d617a-20211118:
   version "18.0.0-beta-fdc1d617a-20211118"
@@ -7839,7 +7873,7 @@ redux-thunk@^2.4.0:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.4.0.tgz#ac89e1d6b9bdb9ee49ce69a69071be41bbd82d67"
   integrity sha512-/y6ZKQNU/0u8Bm7ROLq9Pt/7lU93cT0IucYMrubo89ENjxPa7i8pqLKu6V4X7/TvYovQ6x01unTeyeZ9lgXiTA==
 
-redux@^4.0.0, redux@^4.1.2:
+redux@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.1.2.tgz#140f35426d99bb4729af760afcf79eaaac407104"
   integrity sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==
@@ -8123,6 +8157,14 @@ scheduler@0.21.0-beta-fdc1d617a-20211118:
   version "0.21.0-beta-fdc1d617a-20211118"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0-beta-fdc1d617a-20211118.tgz#1f5e075e81b48af4a50d8f602a7a636731f0b8d4"
   integrity sha512-fagjljhO7tVIGdT3rtYjjbHve/XfMubdY3Yna799WMK/rfYZtsGvX3GPu3IsjwOIs3IrcGjlxVRm6u3PFO+lwA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.20.2:
+  version "0.20.2"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.2.tgz#4baee39436e34aa93b4874bddcbf0fe8b8b50e91"
+  integrity sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -9176,10 +9218,10 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-sync-external-store@1.0.0-alpha-5cccacd13-20211101:
-  version "1.0.0-alpha-5cccacd13-20211101"
-  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.0.0-alpha-5cccacd13-20211101.tgz#f8833884764e1445291c67e6364a5965c74c75e7"
-  integrity sha512-fHBWZJfojgj5xQ+63annym0vZ4tTtJlEAjzhnSdk6B2ptnPeV2OoGSk91kcpchbbaH1JororN4xXDgJ0A4ar2A==
+use-sync-external-store@1.0.0-beta-fdc1d617a-20211118:
+  version "1.0.0-beta-fdc1d617a-20211118"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.0.0-beta-fdc1d617a-20211118.tgz#3b4a4b704c71a207442e0ce668318a5bd8945bfd"
+  integrity sha512-y61IkqITq6jkikjAU6e0sIyOFal8UCmpSg08lBEwqgdir1t11V+22WK+1eHrRwKD3494yt0PtST8hsMn3aFC2g==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
