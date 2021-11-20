@@ -6,6 +6,7 @@ import { Home } from '../routes/Home/Home'
 import { StreamView } from '../routes/streams/StreamView'
 import store from '../store/store'
 import '../styles/main.scss'
+import { ErrorBoundary } from './error/ErrorBoundary';
 
 const App = () => {
   return (
@@ -36,10 +37,12 @@ const App = () => {
 
           <div className='container main-container'>
             <div className='page-layout__viewport'>
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/streams' element={<StreamView />} />
-              </Routes>
+              <ErrorBoundary>
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/streams' element={<StreamView />} />
+                </Routes>
+              </ErrorBoundary>
             </div>
           </div>
         </BrowserRouter>
