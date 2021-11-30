@@ -4,6 +4,7 @@ import Loader from '../../components/loader/Loader'
 import TwitchPlayer from '../../components/twitch/TwitchPlayer'
 import { Stream } from '../../models/Stream'
 import { useGetLiveStreamsQuery } from '../../actions/api';
+import { QueryError } from '../../components/error/QueryError';
 
 
 export const StreamView = () => {
@@ -12,8 +13,8 @@ export const StreamView = () => {
   const result = useGetLiveStreamsQuery(undefined, { pollingInterval: 60000 })
 
 
-  if (result.isError) {
-    return <div><h1>{String(result.error)}</h1></div>
+  if (result.isError && result.error) {
+    return <QueryError {...result} />
   }
 
   if (result.isLoading) {
