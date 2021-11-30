@@ -73,7 +73,6 @@ export const StreamView = () => {
   return (
     <div style={{ margin: '0 auto' }} className={`stream-view-container ${result.isFetching ? 'disabled':''}`}>
       {result.data.length === 0 ? <h6>No streams found</h6> : renderList(result.data)}
-      <button onClick={result.refetch}>Refetch Posts</button>
     </div>
   )
 }
