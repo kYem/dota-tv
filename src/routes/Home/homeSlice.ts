@@ -25,9 +25,9 @@ const homeSlice = createSlice({
         return { ...state, matches: [] }
       }
 
-      const steamId = state.serverId || matches[0].server_steam_id;
       const matchesWithoutCustom = matches.filter(m => m.lobby_type <= LobbyType.RankedMatchmaking)
-      return { ...state, matches: matchesWithoutCustom, serverId: steamId }
+      const serverId = state.serverId || matchesWithoutCustom[0].server_steam_id;
+      return { ...state, matches: matchesWithoutCustom, serverId }
     },
     setLiveMatchId: (state, action) => {
       state.serverId = action.payload
