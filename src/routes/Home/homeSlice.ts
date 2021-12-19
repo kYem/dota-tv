@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Match, TopLiveGames } from '../../models/TopLiveGames'
 import { API_ERROR, getLiveMatches } from '../../actions/api'
 import { AppThunk } from '../../store/store'
+import { LobbyType } from '../../models/GameEnums';
 
 interface InitialState {
   serverId: string;
@@ -25,7 +26,8 @@ const homeSlice = createSlice({
       }
 
       const steamId = state.serverId || matches[0].server_steam_id;
-      return { ...state, matches, serverId: steamId }
+      const matchesWithoutCustom = matches.filter(m => m.lobby_type <= LobbyType.RankedMatchmaking)
+      return { ...state, matches: matchesWithoutCustom, serverId: steamId }
     },
     setLiveMatchId: (state, action) => {
       state.serverId = action.payload
