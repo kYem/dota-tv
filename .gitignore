@@ -14,11 +14,8 @@ release.zip
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env.prod
+.env
+.env.*
 
 npm-debug.log*
 yarn-debug.log*
