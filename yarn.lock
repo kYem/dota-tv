@@ -9104,10 +9104,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.5.4:
-  version "4.5.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.4.tgz#a17d3a0263bf5c8723b9c52f43c5084edf13c2e8"
-  integrity sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==
+typescript@^4.6.0-dev.20220123:
+  version "4.6.0-dev.20220123"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20220123.tgz#8b68f3aba15c377e54c34dc747f4f6e813a5db80"
+  integrity sha512-w380L7pKumXRO4qYjky6MVXWcQRzvRt6NeAFVRGlsxbGQSLVEwvmgPbFvSIdfu5xTfSvKYxqKcQsPge1n8cACA==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
