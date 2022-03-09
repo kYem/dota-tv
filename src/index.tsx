@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
@@ -8,7 +8,7 @@ const container = document.getElementById('root');
 if (!container) {
   throw new Error(`Missing container element root`)
 }
-const root = ReactDOM.createRoot(container);
+const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <App />
