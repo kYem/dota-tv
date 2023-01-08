@@ -10,7 +10,6 @@
     "bootstrap": "^5.2.3",
     "dayjs": "^1.11.3",
     "dota2-minimap-hero-sprites": "^2.4.0",
-    "loader-utils": "^1.4.2",
     "material-icons": "^1.11.4",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
