@@ -4,9 +4,9 @@ const defaultProps = ({
   fill: '#6441a4',
   fillRule: 'evenodd' as 'evenodd',
   height: '16px',
-})
+}) as const
 
-const IconTwitchGlitch = (props: React.SVGProps<SVGSVGElement>) => {
+const IconTwitchGlitch = (props: React.SVGProps<SVGSVGElement> & Partial<typeof defaultProps> = {}) => {
   const mergedProps = { ...defaultProps, ...props }
   return (
     <svg

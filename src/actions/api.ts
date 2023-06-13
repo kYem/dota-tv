@@ -1,4 +1,3 @@
-import 'whatwg-fetch'
 import BaseMapper from './baseMapper'
 import config from '../project.config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';

@@ -1,6 +1,4 @@
-/// <reference types="react-scripts" />
-
-
+declare module '@testing-library/jest-dom/matchers'
 interface TwitchPlayerEmbed extends HTMLDivElement {
   getPlayer: () => any
 }
