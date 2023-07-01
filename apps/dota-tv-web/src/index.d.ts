@@ -1,5 +1,4 @@
-/// <reference types="react-scripts" />
-
+/// <reference types="vite/client" />
 
 interface TwitchPlayerEmbed extends HTMLDivElement {
   getPlayer: () => any
