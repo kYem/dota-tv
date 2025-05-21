@@ -23,7 +23,7 @@
   }
 
   th:nth-child(5), th:nth-child(6) {
-    width: 8%;
+    width: 10%;
     text-align: right;
   }
 
@@ -31,17 +31,9 @@
     width: 20%;
   }
 
-  th:nth-child(8) {
-    width: 15%;
-  }
-
   tr {
     td:nth-child(5), td:nth-child(6) {
       text-align: right;
-    }
-    
-    td.player-items-cell {
-      padding: 0.5rem;
     }
     
     td.player-abilities-cell {

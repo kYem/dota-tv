@@ -65,7 +65,6 @@ export interface Player {
   // New fields for improved player view
   respawn_timer?: number;
   has_buyback?: boolean;
-  items?: PlayerItem[];
   abilities?: PlayerAbility[];
   ultimate_state?: UltimateState;
   is_alive?: boolean;

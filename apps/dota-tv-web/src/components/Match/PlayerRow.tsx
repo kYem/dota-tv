@@ -2,7 +2,7 @@ import React from 'react'
 import LiveValue from './LiveValue'
 import './PlayerRow.scss'
 import { Player } from '../../models/LiveMatchData';
-import { PlayerItem, PlayerAbility } from '../../models/PlayerItem';
+import { PlayerAbility } from '../../models/PlayerItem';
 
 interface PlayerRowProps extends Player {
   team_tag?: string;
@@ -23,7 +23,6 @@ class PlayerRow extends React.Component<PlayerRowProps> {
     is_alive: true,
     respawn_timer: 0,
     has_buyback: true,
-    items: [],
     abilities: []
   }
 
@@ -39,26 +38,6 @@ class PlayerRow extends React.Component<PlayerRowProps> {
         Dead ({respawn_timer}s)
         {has_buyback && <span className="buyback-status">BB</span>}
       </span>
-    );
-  }
-
-  renderItems() {
-    const { items } = this.props;
-    
-    if (!items || items.length === 0) {
-      return <div className="player-items empty">No items</div>;
-    }
-    
-    return (
-      <div className="player-items">
-        {items.map((item: PlayerItem, index: number) => (
-          <div key={`${item.id}-${index}`} className="player-item" title={item.name}>
-            <img src={item.image} alt={item.name} className="item-image" />
-            {item.charges && item.charges > 0 && <span className="item-charges">{item.charges}</span>}
-            {item.cooldown && item.cooldown > 0 && <span className="item-cooldown">{item.cooldown}</span>}
-          </div>
-        ))}
-      </div>
     );
   }
 
@@ -130,9 +109,6 @@ class PlayerRow extends React.Component<PlayerRowProps> {
         <td><LiveValue value={lh_count} />/{denies_count}</td>
         <td><LiveValue includeSymbol={true} highlightClass={''} value={gold} /></td>
         <td><LiveValue includeSymbol={true} highlightClass={''} value={net_worth || 0} /></td>
-        <td className="player-items-cell">
-          {this.renderItems()}
-        </td>
         <td className="player-abilities-cell">
           {this.renderAbilities()}
         </td>

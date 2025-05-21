@@ -1,11 +1,3 @@
-export interface PlayerItem {
-  id: number;
-  name: string;
-  image: string;
-  charges?: number;
-  cooldown?: number;
-}
-
 export interface UltimateState {
   cooldown: number;
   level: number;

@@ -77,7 +77,6 @@ const PlayerTable = ({ players }: PlayerTableProps) => {
             <th onClick={() => handleSort('net_worth')}>
               Net Worth {renderSortIcon('net_worth')}
             </th>
-            <th>Items</th>
             <th>Abilities</th>
           </tr>
         </thead>
