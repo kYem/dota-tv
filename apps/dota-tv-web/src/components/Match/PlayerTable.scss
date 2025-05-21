@@ -5,7 +5,7 @@
     position: relative;
     
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: #343a40; // Slightly lighter version of the dark header
     }
     
     .sort-icon {
