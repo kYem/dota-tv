@@ -1,16 +1,51 @@
 .player-match-table {
-  th:nth-child(2) {
-    width : 25%;
+  th {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .sort-icon {
+      margin-left: 5px;
+      font-size: 0.8rem;
+    }
   }
 
-  th:last-child {
+  th:nth-child(2) {
+    width: 5%;
+  }
+
+  th:nth-child(3), th:nth-child(4) {
+    width: 10%;
+  }
+
+  th:nth-child(5), th:nth-child(6) {
+    width: 8%;
     text-align: right;
   }
 
+  th:nth-child(7) {
+    width: 20%;
+  }
+
+  th:nth-child(8) {
+    width: 15%;
+  }
+
   tr {
-    td:last-child {
+    td:nth-child(5), td:nth-child(6) {
       text-align: right;
-      width: 12%;
+    }
+    
+    td.player-items-cell {
+      padding: 0.5rem;
+    }
+    
+    td.player-abilities-cell {
+      padding: 0.5rem;
     }
   }
 }
