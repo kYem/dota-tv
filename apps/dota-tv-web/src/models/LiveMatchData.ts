@@ -61,5 +61,11 @@ export interface Player {
   x:             number;
   y:             number;
   net_worth:     number;
-  hero: Hero
+  hero: Hero;
+  // New fields for improved player view
+  respawn_timer?: number;
+  has_buyback?: boolean;
+  abilities?: PlayerAbility[];
+  ultimate_state?: UltimateState;
+  is_alive?: boolean;
 }

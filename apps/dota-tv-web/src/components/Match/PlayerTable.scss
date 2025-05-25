@@ -1,16 +1,43 @@
 .player-match-table {
-  th:nth-child(2) {
-    width : 25%;
+  th {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    
+    &:hover {
+      background-color: #343a40; // Slightly lighter version of the dark header
+    }
+    
+    .sort-icon {
+      margin-left: 5px;
+      font-size: 0.8rem;
+    }
   }
 
-  th:last-child {
+  th:nth-child(2) {
+    width: 5%;
+  }
+
+  th:nth-child(3), th:nth-child(4) {
+    width: 10%;
+  }
+
+  th:nth-child(5), th:nth-child(6) {
+    width: 10%;
     text-align: right;
   }
 
+  th:nth-child(7) {
+    width: 20%;
+  }
+
   tr {
-    td:last-child {
+    td:nth-child(5), td:nth-child(6) {
       text-align: right;
-      width: 12%;
+    }
+    
+    td.player-abilities-cell {
+      padding: 0.5rem;
     }
   }
 }
