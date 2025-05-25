@@ -48,10 +48,15 @@ const PlayerTable = ({ players }: PlayerTableProps) => {
   const renderSortIcon = (column: string) => {
     if (sortBy !== column) return null;
     return (
-      <span className="sort-icon">
+      <span className="sort-icon" aria-hidden="true">
         {sortDirection === 'asc' ? '▲' : '▼'}
       </span>
     );
+  };
+
+  const getAriaSort = (column: string) => {
+    if (sortBy !== column) return 'none';
+    return sortDirection === 'asc' ? 'ascending' : 'descending';
   };
 
   return (
@@ -59,22 +64,52 @@ const PlayerTable = ({ players }: PlayerTableProps) => {
       <table className="table player-match-table table-striped table-hover mb-0">
         <thead className="table-dark">
           <tr>
-            <th onClick={() => handleSort('name')}>
+            <th 
+              onClick={() => handleSort('name')}
+              role="button"
+              aria-sort={getAriaSort('name')}
+              tabIndex={0}
+            >
               Player {renderSortIcon('name')}
             </th>
-            <th onClick={() => handleSort('level')}>
+            <th 
+              onClick={() => handleSort('level')}
+              role="button"
+              aria-sort={getAriaSort('level')}
+              tabIndex={0}
+            >
               Level {renderSortIcon('level')}
             </th>
-            <th onClick={() => handleSort('kill_count')}>
+            <th 
+              onClick={() => handleSort('kill_count')}
+              role="button"
+              aria-sort={getAriaSort('kill_count')}
+              tabIndex={0}
+            >
               K/D/A {renderSortIcon('kill_count')}
             </th>
-            <th onClick={() => handleSort('lh_count')}>
+            <th 
+              onClick={() => handleSort('lh_count')}
+              role="button"
+              aria-sort={getAriaSort('lh_count')}
+              tabIndex={0}
+            >
               LH/DN {renderSortIcon('lh_count')}
             </th>
-            <th onClick={() => handleSort('gold')}>
+            <th 
+              onClick={() => handleSort('gold')}
+              role="button"
+              aria-sort={getAriaSort('gold')}
+              tabIndex={0}
+            >
               Gold {renderSortIcon('gold')}
             </th>
-            <th onClick={() => handleSort('net_worth')}>
+            <th 
+              onClick={() => handleSort('net_worth')}
+              role="button"
+              aria-sort={getAriaSort('net_worth')}
+              tabIndex={0}
+            >
               Net Worth {renderSortIcon('net_worth')}
             </th>
             <th>Abilities</th>
