@@ -27,8 +27,8 @@ const PlayerTable = ({ players }: PlayerTableProps) => {
     let bValue: any = b[sortBy as keyof Player];
 
     // Handle undefined values
-    if (aValue === undefined) aValue = 0;
-    if (bValue === undefined) bValue = 0;
+    if (aValue === undefined) aValue = typeof b[sortBy as keyof Player] === 'string' ? '' : 0;
+    if (bValue === undefined) bValue = typeof a[sortBy as keyof Player] === 'string' ? '' : 0;
 
     // For numeric values
     if (typeof aValue === 'number' && typeof bValue === 'number') {
